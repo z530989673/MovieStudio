@@ -51,17 +51,11 @@
     <Reference Include="UnityEngine">
       <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Advertisements">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Advertisements.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Networking">
       <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Analytics">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Analytics.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
@@ -84,7 +78,19 @@
     <Compile Include="Assets\Main\EventSystem\Event.cs" />
     <Compile Include="Assets\Main\EventSystem\EventManager.cs" />
     <Compile Include="Assets\Main\EventSystem\EvtConstant.cs" />
+    <Compile Include="Assets\Main\GameInfo\Charactor.cs" />
+    <Compile Include="Assets\Main\GameInfo\Company.cs" />
+    <Compile Include="Assets\Main\GameInfo\ConfigInfo.cs" />
+    <Compile Include="Assets\Main\GameInfo\GameInfo.cs" />
+    <Compile Include="Assets\Main\GameInfo\GameInfoManager.cs" />
+    <Compile Include="Assets\Main\GameInfo\Movie.cs" />
+    <Compile Include="Assets\Main\GameInfo\PlayerInfo.cs" />
     <Compile Include="Assets\Main\GameManager.cs" />
+    <Compile Include="Assets\Main\Misc\GameConstant.cs" />
+    <Compile Include="Assets\Main\Misc\GameString.cs" />
+    <Compile Include="Assets\Main\Resource\ResourceManager.cs" />
+    <Compile Include="Assets\Main\Scene\SceneManager.cs" />
+    <Compile Include="Assets\Main\UI\UIManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
