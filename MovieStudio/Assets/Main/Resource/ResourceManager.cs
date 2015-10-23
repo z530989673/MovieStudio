@@ -11,7 +11,7 @@ public class ResourceManager : MonoBehaviour {
         get
         {
             if (m_instance == null)
-                m_instance = new ResourceManager();
+                m_instance = GameObject.FindObjectOfType(typeof(ResourceManager)) as ResourceManager;
             return m_instance;
         }
     }

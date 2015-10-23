@@ -4,15 +4,15 @@ using System.Collections;
 public class EventManager : MonoBehaviour {
 
     
-    private EventManager m_instance;
+    private static EventManager m_instance;
     private EventManager() { }
 
-    public EventManager Instance
+    public static EventManager Instance
     {
         get
         {
             if (m_instance == null)
-                m_instance = new EventManager();
+                m_instance = GameObject.FindObjectOfType(typeof(EventManager)) as EventManager;
             return m_instance;
         }
     }
@@ -30,7 +30,7 @@ public class EventManager : MonoBehaviour {
 
     public void SendEvent(EVT_TYPE t)
     {
-        Event evt = new Event(EVT_TYPE.EVT_TYPE_DEFAULT);
+        Event evt = new Event(t);
         m_eventsQueue.Enqueue(evt);
     }
 
@@ -40,6 +40,7 @@ public class EventManager : MonoBehaviour {
         m_eventsHandlerLink = new ArrayList(200);
 
         m_eventsHandlerLink.Add(new Handler(DefaultEventHandler.Handle));
+        m_eventsHandlerLink.Add(new Handler(EnterGameEventHandler.Handle));
 	}
 
 	// Update is called once per frame

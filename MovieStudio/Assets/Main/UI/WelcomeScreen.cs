@@ -2,14 +2,19 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class WelcomeScreenControl : MonoBehaviour {
+public class WelcomeScreen : Screen {
 
     // Use this for initialization
 	void Awake () {
         Button button = GetComponentInChildren<Button>();
-        button.onClick.AddListener(delegate { UIManager.Instance.EnterGame(); } );
+        button.onClick.AddListener(delegate { EnterGameEvent(); });
 	}
 	
+    void EnterGameEvent()
+    {
+        SendEvent(EVT_TYPE.EVT_TYPE_ENTER_GAME);
+    }
+
 	// Update is called once per frame
 	void Update () {
 	

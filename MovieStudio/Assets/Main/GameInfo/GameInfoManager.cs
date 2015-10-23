@@ -11,7 +11,7 @@ public class GameInfoManager : MonoBehaviour {
         get
         {
             if (m_instance == null)
-                m_instance = new GameInfoManager();
+                m_instance = GameObject.FindObjectOfType(typeof(GameInfoManager)) as GameInfoManager;
             return m_instance;
         }
     }

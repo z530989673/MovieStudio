@@ -11,7 +11,7 @@ public class SceneManager : MonoBehaviour {
         get
         {
             if (m_instance == null)
-                m_instance = new SceneManager();
+                m_instance = GameObject.FindObjectOfType(typeof(SceneManager)) as SceneManager;
             return m_instance;
         }
     }
