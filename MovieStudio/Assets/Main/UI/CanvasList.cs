@@ -45,7 +45,7 @@ public class CanvasList : MonoBehaviour {
             {
                 screen = Instantiate(screen);
                 m_screens.Add(name, screen);
-                screen.transform.parent = m_screen.transform;
+                screen.transform.SetParent(m_screen.transform, false);
                 m_curScreen = screen;
             }
         }
@@ -70,7 +70,7 @@ public class CanvasList : MonoBehaviour {
 
         GameObject overlay = Resources.Load<GameObject>("UI/Prefabs/" + name);
         overlay = Instantiate(overlay);
-        overlay.transform.SetParent(m_overlay.transform);
+        overlay.transform.SetParent(m_overlay.transform, false);
         m_overlays.Add(name, overlay);
         overlay.SetActive(false);
         return overlay;
