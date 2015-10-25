@@ -23,7 +23,7 @@ public class UIManager : MonoBehaviour {
 	void Start () {
         if (!m_canvas)
         {
-            GameObject canvas = Instantiate(Resources.Load<GameObject>("UI/Prefabs/Canvas"));
+            GameObject canvas = Instantiate(ResourceManager.Instance.GetResourceObject("UI/Prefabs/Canvas"));
             m_canvas = canvas;
             m_canvasList = m_canvas.GetComponent<CanvasList>();
             m_canvasList.OpenScreen("MainScreen");

@@ -3,10 +3,10 @@ using System.Collections;
 
 public class SceneManager : MonoBehaviour {
 
-    private SceneManager m_instance;
+    private static SceneManager m_instance;
     private SceneManager() { }
 
-    public SceneManager Instance
+    public static SceneManager Instance
     {
         get
         {

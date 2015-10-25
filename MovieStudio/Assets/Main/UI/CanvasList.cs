@@ -40,7 +40,7 @@ public class CanvasList : MonoBehaviour {
         }
         else
         {
-            GameObject screen = Resources.Load<GameObject>("UI/Prefabs/" + name);
+            GameObject screen = ResourceManager.Instance.GetResourceObject("UI/Prefabs/" + name);
             if (screen)
             {
                 screen = Instantiate(screen);

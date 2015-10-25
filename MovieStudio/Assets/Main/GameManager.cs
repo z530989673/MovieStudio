@@ -3,10 +3,10 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour {
 
-    private GameManager m_instance;
+    private static GameManager m_instance;
     private GameManager() { }
 
-    public GameManager Instance
+    public static GameManager Instance
     {
         get
         {
