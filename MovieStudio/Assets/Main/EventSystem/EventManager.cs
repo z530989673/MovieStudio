@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class EventManager : MonoBehaviour {
 
@@ -21,7 +22,7 @@ public class EventManager : MonoBehaviour {
 
     private Queue m_eventsQueue;
 
-    private ArrayList m_eventsHandlerLink;
+    private Dictionary<EVT_TYPE, Handler> m_eventsHandlerLink;
 
     public void SendEvent(Event evt)
     {
@@ -37,10 +38,10 @@ public class EventManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         m_eventsQueue = new Queue(100);
-        m_eventsHandlerLink = new ArrayList(200);
+        m_eventsHandlerLink = new Dictionary<EVT_TYPE, Handler>(200);
 
-        m_eventsHandlerLink.Add(new Handler(DefaultEventHandler.Handle));
-        m_eventsHandlerLink.Add(new Handler(EnterGameEventHandler.Handle));
+        m_eventsHandlerLink[EVT_TYPE.EVT_TYPE_DEFAULT] = new Handler(DefaultEventHandler.Handle);
+        m_eventsHandlerLink[EVT_TYPE.EVT_TYPE_ENTER_GAME] = new Handler(EnterGameEventHandler.Handle);
 	}
 
 	// Update is called once per frame
