@@ -13,6 +13,11 @@ public class Screen : MonoBehaviour {
         EventManager.Instance.SendEvent(evt);
     }
 
+    virtual protected void Init(Event evt)
+    {
+
+    }
+
 	// Use this for initialization
 	void Start () {
 	

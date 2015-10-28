@@ -50,6 +50,7 @@ public class CanvasList : MonoBehaviour {
             }
         }
         m_curScreen.SetActive(true);
+
         return m_curScreen;
     }
 

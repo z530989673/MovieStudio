@@ -43,16 +43,25 @@ public class ResourceManager : MonoBehaviour {
         }
     }
 
-    public void StartPreLoad()
+    public IEnumerator StartPreLoad()
     {
         totalLoad = prefabLoadList.Count + textureLoadList.Count + fileLoadList.Count;
 
         for (int i = 0; i < prefabLoadList.Count; i++)
-            StartCoroutine(Load(prefabLoadList[i], RESOURCE_TYPE.RESOURCE_PREFAB));
+        {
+            Load(prefabLoadList[i], RESOURCE_TYPE.RESOURCE_PREFAB);
+            yield return 0;
+        }
         for (int i = 0; i < textureLoadList.Count; i++)
-            StartCoroutine(Load(textureLoadList[i], RESOURCE_TYPE.RESOURCE_TEXTURE));
+        {
+            Load(textureLoadList[i], RESOURCE_TYPE.RESOURCE_TEXTURE);
+            yield return 0;
+        }
         for (int i = 0; i < fileLoadList.Count; i++)
-            StartCoroutine(Load(fileLoadList[i], RESOURCE_TYPE.RESOURCE_FILE));
+        {
+            Load(fileLoadList[i], RESOURCE_TYPE.RESOURCE_FILE);
+            yield return 0;
+        }
 
         EventManager.Instance.SendEvent(EVT_TYPE.EVT_TYPE_PRELOAD_TOTAL_FINISH);
 
@@ -71,7 +80,7 @@ public class ResourceManager : MonoBehaviour {
         return loadedObjects[str];
     }
 
-    private IEnumerator Load(string path, RESOURCE_TYPE type)
+    private void Load(string path, RESOURCE_TYPE type)
     {
         Event evt = new Event(EVT_TYPE.EVT_TYPE_PRELOAD_PARTIAL_FINISH);
 
@@ -80,7 +89,8 @@ public class ResourceManager : MonoBehaviour {
             case RESOURCE_TYPE.RESOURCE_PREFAB:
                 GameObject obj = Resources.Load<GameObject>(path);
                 evt.evt_obj.Add(obj);
-                loadedObjects[path] = obj;
+                if (!loadedObjects.ContainsKey(path))
+                    loadedObjects[path] = obj;
                 break;
             case RESOURCE_TYPE.RESOURCE_TEXTURE:
                 //textureLoadList.Add(path);
@@ -94,7 +104,6 @@ public class ResourceManager : MonoBehaviour {
         evt.evt_obj.Add((float)currentLoaded / totalLoad);
 
         EventManager.Instance.SendEvent(evt);
-        yield return 0;
     }
 
 	// Use this for initialization

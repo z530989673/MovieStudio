@@ -28,19 +28,19 @@ public class GameManager : MonoBehaviour {
 
     void startPreLoad()
     {
-        EventManager.Instance.BindEvent(EVT_TYPE.EVT_TYPE_PRELOAD_PARTIAL_FINISH, new Handler(PartialFinshed));
-        EventManager.Instance.BindEvent(EVT_TYPE.EVT_TYPE_PRELOAD_TOTAL_FINISH, new Handler(TotalFinshed));
+        for (int i = 0; i < 25; i++)//temp
+        {
+            ResourceManager.Instance.AddPreLoadResource(RESOURCE_TYPE.RESOURCE_PREFAB, "UI/Prefabs/MainScreen");
+            ResourceManager.Instance.AddPreLoadResource(RESOURCE_TYPE.RESOURCE_PREFAB, "UI/Prefabs/TopBar");
+            ResourceManager.Instance.AddPreLoadResource(RESOURCE_TYPE.RESOURCE_PREFAB, "UI/Prefabs/WelcomeScreen");
+        }
 
-        ResourceManager.Instance.AddPreLoadResource(RESOURCE_TYPE.RESOURCE_PREFAB, "UI/Prefabs/Canvas");
-        ResourceManager.Instance.AddPreLoadResource(RESOURCE_TYPE.RESOURCE_PREFAB, "UI/Prefabs/MainScreen");
-        ResourceManager.Instance.AddPreLoadResource(RESOURCE_TYPE.RESOURCE_PREFAB, "UI/Prefabs/TopBar");
-        ResourceManager.Instance.AddPreLoadResource(RESOURCE_TYPE.RESOURCE_PREFAB, "UI/Prefabs/WelcomeScreen");
-
-        ResourceManager.Instance.StartPreLoad();
+        StartCoroutine(ResourceManager.Instance.StartPreLoad());
     }
 
 	// Use this for initialization
 	void Start () {
+        UIManager.Instance.Init();
         startPreLoad();
 	}
 	
