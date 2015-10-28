@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
+public delegate void Handler(Event evt);
+
 public class EventManager : MonoBehaviour {
 
     
@@ -18,11 +20,25 @@ public class EventManager : MonoBehaviour {
         }
     }
 
-    private delegate void Handler(Event evt);
-
     private Queue m_eventsQueue;
 
-    private Dictionary<EVT_TYPE, Handler> m_eventsHandlerLink;
+    private Dictionary<EVT_TYPE, Handler> m_callBacks;
+
+    /// <summary>
+    /// CAUTION: each event can only bind one callback function!!!
+    /// </summary>
+    /// <param name="t">event type</param>
+    /// <param name="hdr">call back(handler)</param>
+    public void BindEvent(EVT_TYPE t, Handler hdr)
+    {
+        m_callBacks[t] = hdr;
+    }
+
+    public void UnbindEvent(EVT_TYPE t)
+    {
+        if (m_callBacks.ContainsKey(t))
+            m_callBacks.Remove(t);
+    }
 
     public void SendEvent(Event evt)
     {
@@ -35,13 +51,18 @@ public class EventManager : MonoBehaviour {
         m_eventsQueue.Enqueue(evt);
     }
 
+    void Awake()
+    {
+        m_eventsQueue = new Queue(100);
+        m_callBacks = new Dictionary<EVT_TYPE, Handler>(200);
+
+        BindEvent(EVT_TYPE.EVT_TYPE_DEFAULT, new Handler(DefaultEventHandler.Handle));
+        BindEvent(EVT_TYPE.EVT_TYPE_ENTER_GAME, new Handler(EnterGameEventHandler.Handle));
+    }
+
 	// Use this for initialization
 	void Start () {
-        m_eventsQueue = new Queue(100);
-        m_eventsHandlerLink = new Dictionary<EVT_TYPE, Handler>(200);
 
-        m_eventsHandlerLink[EVT_TYPE.EVT_TYPE_DEFAULT] = new Handler(DefaultEventHandler.Handle);
-        m_eventsHandlerLink[EVT_TYPE.EVT_TYPE_ENTER_GAME] = new Handler(EnterGameEventHandler.Handle);
 	}
 
 	// Update is called once per frame
@@ -51,13 +72,11 @@ public class EventManager : MonoBehaviour {
             Event evt = m_eventsQueue.Dequeue() as Event;
             if (evt.type < EVT_TYPE.EVT_TYPE_MAX)
             {
-                Handler hdr = m_eventsHandlerLink[(int)evt.type] as Handler;
+                Handler hdr = m_callBacks[evt.type] as Handler;
                 hdr(evt);
             }
             else
-            {
                 Debug.LogError("Wrong Event Type!");
-            }
         }
 	}
 }

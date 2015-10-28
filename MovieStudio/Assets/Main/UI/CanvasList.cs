@@ -68,7 +68,7 @@ public class CanvasList : MonoBehaviour {
             return m_overlays[name];
         }
 
-        GameObject overlay = Resources.Load<GameObject>("UI/Prefabs/" + name);
+        GameObject overlay = ResourceManager.Instance.GetResourceObject("UI/Prefabs/" + name);
         overlay = Instantiate(overlay);
         overlay.transform.SetParent(m_overlay.transform, false);
         m_overlays.Add(name, overlay);

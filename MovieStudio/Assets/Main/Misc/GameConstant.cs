@@ -1,6 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public enum RESOURCE_TYPE
+{
+    RESOURCE_PREFAB = 0,
+    RESOURCE_TEXTURE,
+    RESOURCE_FILE
+}
+
 public enum CHARACTOR_RANK  //temp
 {
     NORMAL = 0,

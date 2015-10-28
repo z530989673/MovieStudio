@@ -2,10 +2,10 @@
 using System.Collections;
 
 public class Event {
-    public Event(EVT_TYPE t) { type = t; }
+    public Event(EVT_TYPE t) { type = t; evt_obj = new ArrayList(); }
 
     //public delegate void CallBack(Event evt);
-    public object evt_obj;
+    public ArrayList evt_obj;
     public EVT_TYPE type;
     //public event CallBack callBacks;
 
