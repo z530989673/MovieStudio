@@ -16,14 +16,34 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    void PartialFinshed(Event evt)
+    public GameObject GetResourceObject(string str)
     {
-        Debug.Log((float)evt.evt_obj[1]);
+        return ResourceManager.Instance.GetResourceObject(str);
     }
 
-    void TotalFinshed(Event evt)
+    /// <summary>
+    /// CAUTION: each event can only bind one callback function!!!
+    /// </summary>
+    /// <param name="t">event type</param>
+    /// <param name="hdr">call back(handler)</param>
+    public void BindEvent(EVT_TYPE t, Handler hdr)
     {
-        Debug.Log("Total finished");
+        EventManager.Instance.BindEvent(t, hdr);
+    }
+
+    public void UnbindEvent(EVT_TYPE t)
+    {
+        EventManager.Instance.UnbindEvent(t);
+    }
+
+    public void SendEvent(EVT_TYPE t)
+    {
+        EventManager.Instance.SendEvent(t);
+    }
+
+    public void SendEvent(Event evt)
+    {
+        EventManager.Instance.SendEvent(evt);
     }
 
     void startPreLoad()

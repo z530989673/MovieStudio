@@ -8,8 +8,8 @@ public class LoadingScreen : Screen {
 
 	// Use this for initialization
 	void Start () {
-        EventManager.Instance.BindEvent(EVT_TYPE.EVT_TYPE_PRELOAD_PARTIAL_FINISH, new Handler(UpdatePercent));
-        EventManager.Instance.BindEvent(EVT_TYPE.EVT_TYPE_PRELOAD_TOTAL_FINISH, new Handler(FinishLoad));
+        GameManager.Instance.BindEvent(EVT_TYPE.EVT_TYPE_PRELOAD_PARTIAL_FINISH, new Handler(UpdatePercent));
+        GameManager.Instance.BindEvent(EVT_TYPE.EVT_TYPE_PRELOAD_TOTAL_FINISH, new Handler(FinishLoad));
 	}
 	
     private void UpdatePercent(Event evt)
@@ -22,7 +22,7 @@ public class LoadingScreen : Screen {
     {
         Event e = new Event(EVT_TYPE.EVT_TYPE_CHANGE_SCREEN);
         e.evt_obj.Add("WelcomeScreen");
-        EventManager.Instance.SendEvent(e);
+        SendEvent(e);
     }
 
 	// Update is called once per frame

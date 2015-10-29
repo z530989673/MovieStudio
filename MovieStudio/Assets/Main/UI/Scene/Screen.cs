@@ -5,12 +5,12 @@ public class Screen : MonoBehaviour {
 
     protected void SendEvent(EVT_TYPE t)
     {
-        EventManager.Instance.SendEvent(t);
+        GameManager.Instance.SendEvent(t);
     }
 
     protected void SendEvent(Event evt)
     {
-        EventManager.Instance.SendEvent(evt);
+        GameManager.Instance.SendEvent(evt);
     }
 
     virtual protected void Init(Event evt)

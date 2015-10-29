@@ -103,7 +103,7 @@ public class ResourceManager : MonoBehaviour {
         currentLoaded++;
         evt.evt_obj.Add((float)currentLoaded / totalLoad);
 
-        EventManager.Instance.SendEvent(evt);
+        GameManager.Instance.SendEvent(evt);
     }
 
 	// Use this for initialization

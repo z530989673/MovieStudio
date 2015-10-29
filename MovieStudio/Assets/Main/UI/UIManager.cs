@@ -23,7 +23,7 @@ public class UIManager : MonoBehaviour {
     {
         if (!m_canvas)
         {
-            GameObject canvas = Instantiate(ResourceManager.Instance.GetResourceObject("UI/Prefabs/Canvas"));
+            GameObject canvas = Instantiate(GameManager.Instance.GetResourceObject("UI/Prefabs/Canvas"));
             m_canvas = canvas;
             m_canvasList = m_canvas.GetComponent<CanvasList>();
             m_canvasList.OpenScreen("LoadingScreen");
@@ -37,7 +37,7 @@ public class UIManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        EventManager.Instance.BindEvent(EVT_TYPE.EVT_TYPE_CHANGE_SCREEN, new Handler(ChangeScreen));
+        GameManager.Instance.BindEvent(EVT_TYPE.EVT_TYPE_CHANGE_SCREEN, new Handler(ChangeScreen));
 	}
 	
 	// Update is called once per frame

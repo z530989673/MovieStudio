@@ -24,11 +24,6 @@ public class EventManager : MonoBehaviour {
 
     private Dictionary<EVT_TYPE, Handler> m_callBacks;
 
-    /// <summary>
-    /// CAUTION: each event can only bind one callback function!!!
-    /// </summary>
-    /// <param name="t">event type</param>
-    /// <param name="hdr">call back(handler)</param>
     public void BindEvent(EVT_TYPE t, Handler hdr)
     {
         m_callBacks[t] = hdr;
