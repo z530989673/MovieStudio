@@ -27,6 +27,7 @@ public class UIManager : MonoBehaviour {
             m_canvas = canvas;
             m_canvasList = m_canvas.GetComponent<CanvasList>();
             m_canvasList.OpenScreen("LoadingScreen");
+			m_canvasList.LoadOverlay("TopBar");
         }
     }
 

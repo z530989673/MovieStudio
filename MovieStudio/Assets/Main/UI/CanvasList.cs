@@ -23,7 +23,6 @@ public class CanvasList : MonoBehaviour {
 
         m_screens = new Dictionary<string, GameObject>();
         m_overlays = new Dictionary<string, GameObject>();
-        Debug.Log(m_screens == null);
     }
 
     // Update is called once per frame
