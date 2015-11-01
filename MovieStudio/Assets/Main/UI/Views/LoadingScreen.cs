@@ -15,7 +15,7 @@ public class LoadingScreen : View {
     private void UpdatePercent(Event evt)
     {
         percentText.text = (float)evt.evt_obj[1] * 100 + "%";
-        Debug.Log((float)evt.evt_obj[1] * 100 + "%");
+        //Debug.Log((float)evt.evt_obj[1] * 100 + "%");
     }
 
     private void FinishLoad(Event evt)
