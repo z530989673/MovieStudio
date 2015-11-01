@@ -16,6 +16,8 @@ public class SceneManager : MonoBehaviour {
         }
     }
 
+    Board gameBoard;
+
 	// Use this for initialization
 	void Start () {
 	
