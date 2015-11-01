@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class TopBarController : Screen {
+public class TopBarController : ViewController {
 
 	private GameObject m_Menu;
 	private GameObject m_Money;

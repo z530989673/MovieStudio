@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class View : MonoBehaviour {
+public class ViewController : MonoBehaviour {
 
     protected void SendEvent(EVT_TYPE t)
     {

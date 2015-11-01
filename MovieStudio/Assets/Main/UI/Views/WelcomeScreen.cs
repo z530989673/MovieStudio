@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class WelcomeScreen : View {
+public class WelcomeScreen : ViewController {
 
     // Use this for initialization
 	void Awake () {
