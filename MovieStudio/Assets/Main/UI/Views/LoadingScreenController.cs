@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class LoadingScreen : ViewController {
+public class LoadingScreenController : ViewController {
 
     public Text percentText;
 
