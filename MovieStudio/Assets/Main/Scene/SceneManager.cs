@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class SceneManager : MonoBehaviour {
 
@@ -17,6 +18,8 @@ public class SceneManager : MonoBehaviour {
     }
 
     Board gameBoard;
+    List<SceneCharactor> charactors;
+    List<Room> rooms;
 
 	// Use this for initialization
 	void Start () {
