@@ -51,4 +51,11 @@ public class UIManager : MonoBehaviour {
         m_canvasList.OpenScreen("MainScreen");
         m_canvasList.SetOverlayEnable("TopBar", true);
     }
+
+	public void MakeMovie()
+	{
+		GameObject newMovie = m_canvasList.LoadPopUp("NewMoviePopUp");
+		m_canvasList.SetPopupEnable("NewMoviePopUp", !newMovie.activeInHierarchy);
+	}
+
 }

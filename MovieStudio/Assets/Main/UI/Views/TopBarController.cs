@@ -12,7 +12,11 @@ public class TopBarController : ViewController {
 	private GameObject m_Competers;
 
 	private GameObject m_DropMenu;
-
+	private GameObject m_MakeMovie;
+	private GameObject m_MovieSite;
+	private GameObject m_InternalPlan;
+	private GameObject m_ExternalPlan;
+	
 	void Awake()
 	{
 		Init();
@@ -29,7 +33,20 @@ public class TopBarController : ViewController {
 		m_Competers = ButtonGroup.FindChild("Competers").gameObject;
 		m_DropMenu = transform.FindChild("DropMenu").gameObject;
 
-		m_DropMenu.SetActive(false);
+		if(m_DropMenu)
+		{
+			Transform menuGroup = m_DropMenu.transform.FindChild("MenuGroup");
+			m_MakeMovie = menuGroup.FindChild("MakeMovie").gameObject;
+			m_MovieSite = menuGroup.FindChild("MovieSite").gameObject;
+			m_InternalPlan = menuGroup.FindChild("InternalPlan").gameObject;
+			m_ExternalPlan = menuGroup.FindChild("ExternalPlan").gameObject;
+
+
+			m_MakeMovie.GetComponent<Button>().onClick.AddListener( delegate { Debug.Log("set!"); SendEvent(EVT_TYPE.EVT_TYPE_MAKEMOVIE); } );
+
+
+			m_DropMenu.SetActive(false);
+		}
 		
 		m_Menu.GetComponent<Button>().onClick.AddListener( delegate { m_DropMenu.SetActive(!m_DropMenu.activeInHierarchy); });
 	}

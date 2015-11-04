@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -13,6 +14,7 @@ public class CanvasList : MonoBehaviour {
 
     Dictionary<string, GameObject> m_screens;
     Dictionary<string, GameObject> m_overlays;
+	Dictionary<string, GameObject> m_popups;
 
     // Use this for initialization
     void Awake() {
@@ -23,6 +25,11 @@ public class CanvasList : MonoBehaviour {
 
         m_screens = new Dictionary<string, GameObject>();
         m_overlays = new Dictionary<string, GameObject>();
+		m_popups = new Dictionary<string, GameObject>();
+
+		// Set backgound of pop up to click to close all popups
+		Transform background = m_popup.transform.GetChild(0);
+		background.GetComponent<Button>().onClick.AddListener( ()=>{CloseAllPopUps(); background.gameObject.SetActive(false);});
     }
 
     // Update is called once per frame
@@ -83,5 +90,36 @@ public class CanvasList : MonoBehaviour {
             m_overlays[name].SetActive(enabled);
         }
     }
+
+	public GameObject LoadPopUp(string name)
+	{
+		if(m_popups.ContainsKey(name))
+		{
+			return m_popups[name];
+		}
+
+		GameObject popup = Instantiate(GameManager.Instance.GetResourceObject("UI/Prefabs/" + name));
+		popup.transform.SetParent(m_popup.transform, false);
+		m_popups.Add(name, popup);
+		popup.SetActive(false);
+		return popup;
+	}
+
+	public void SetPopupEnable(string name, bool enabled)
+	{
+		if (m_popups.ContainsKey(name))
+		{
+			m_popup.transform.GetChild(0).gameObject.SetActive(enabled);
+			m_popups[name].SetActive(enabled);
+		}
+	}
+
+	public void CloseAllPopUps()
+	{
+		foreach( string key in m_popups.Keys)
+		{
+			m_popups[key].SetActive(false);
+		}
+	}
 
 }

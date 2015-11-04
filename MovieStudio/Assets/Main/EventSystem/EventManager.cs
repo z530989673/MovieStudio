@@ -53,6 +53,7 @@ public class EventManager : MonoBehaviour {
 
         BindEvent(EVT_TYPE.EVT_TYPE_DEFAULT, new Handler(DefaultEventHandler.Handle));
         BindEvent(EVT_TYPE.EVT_TYPE_ENTER_GAME, new Handler(EnterGameEventHandler.Handle));
+		BindEvent(EVT_TYPE.EVT_TYPE_MAKEMOVIE, new Handler(DefaultEventHandler.MakeMovie));
     }
 
 	// Use this for initialization

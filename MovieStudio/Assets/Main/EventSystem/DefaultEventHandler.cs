@@ -7,4 +7,9 @@ public class DefaultEventHandler {
         Debug.Log("event Handled in handler!");
         //evt.HandleCallBacks(evt);
     }
+
+	public static void MakeMovie(Event evt)
+	{
+		UIManager.Instance.MakeMovie();
+	}
 }
