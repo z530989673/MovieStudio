@@ -40,9 +40,15 @@ public class EventManager : MonoBehaviour {
         m_eventsQueue.Enqueue(evt);
     }
 
-    public void SendEvent(EVT_TYPE t)
+    public void SendEvent(EVT_TYPE t, object obj)
     {
-        Event evt = new Event(t);
+        Event evt = new Event(t, obj);
+        m_eventsQueue.Enqueue(evt);
+    }
+
+    public void SendEvent(EVT_TYPE t, ArrayList list)
+    {
+        Event evt = new Event(t, list);
         m_eventsQueue.Enqueue(evt);
     }
 
@@ -53,7 +59,8 @@ public class EventManager : MonoBehaviour {
 
         BindEvent(EVT_TYPE.EVT_TYPE_DEFAULT, new Handler(DefaultEventHandler.Handle));
         BindEvent(EVT_TYPE.EVT_TYPE_ENTER_GAME, new Handler(EnterGameEventHandler.Handle));
-		BindEvent(EVT_TYPE.EVT_TYPE_MAKEMOVIE, new Handler(DefaultEventHandler.MakeMovie));
+        BindEvent(EVT_TYPE.EVT_TYPE_MAKEMOVIE, new Handler(DefaultEventHandler.MakeMovie));
+        BindEvent(EVT_TYPE.EVT_TYPE_LOAD_FAILED, new Handler(LoadEventHandler.LoadFailed));
     }
 
 	// Use this for initialization

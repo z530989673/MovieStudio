@@ -36,9 +36,14 @@ public class GameManager : MonoBehaviour {
         EventManager.Instance.UnbindEvent(t);
     }
 
-    public void SendEvent(EVT_TYPE t)
+    public void SendEvent(EVT_TYPE t, object obj = null)
     {
-        EventManager.Instance.SendEvent(t);
+        EventManager.Instance.SendEvent(t, obj);
+    }
+
+    public void SendEvent(EVT_TYPE t, ArrayList list)
+    {
+        EventManager.Instance.SendEvent(t, list);
     }
 
     public void SendEvent(Event evt)

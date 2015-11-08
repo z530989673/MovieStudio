@@ -18,12 +18,13 @@ public class ResourceManager : MonoBehaviour {
     }
 
     private Dictionary<string, GameObject> loadedObjects;
+    private Dictionary<string, TextAsset> loadedTextAssets;
     // There may have more things that should be loaded at the very beginning
     // like config files and game data and textures!!! But, temporarily, I
     // can't find any good type to represent them.
     private List<string> prefabLoadList;
     private List<string> textureLoadList;
-    private List<string> fileLoadList;
+    private List<string> textAssetLoadList;
 
     private int totalLoad, currentLoaded;
 
@@ -37,15 +38,15 @@ public class ResourceManager : MonoBehaviour {
             case RESOURCE_TYPE.RESOURCE_TEXTURE:
                 textureLoadList.Add(path);
                 break;
-            case RESOURCE_TYPE.RESOURCE_FILE:
-                fileLoadList.Add(path);
+            case RESOURCE_TYPE.RESOURCE_TEXTASSET:
+                textAssetLoadList.Add(path);
                 break;
         }
     }
 
     public IEnumerator StartPreLoad()
     {
-        totalLoad = prefabLoadList.Count + textureLoadList.Count + fileLoadList.Count;
+        totalLoad = prefabLoadList.Count + textureLoadList.Count + textAssetLoadList.Count;
 
         for (int i = 0; i < prefabLoadList.Count; i++)
         {
@@ -57,27 +58,58 @@ public class ResourceManager : MonoBehaviour {
             Load(textureLoadList[i], RESOURCE_TYPE.RESOURCE_TEXTURE);
             yield return 0;
         }
-        for (int i = 0; i < fileLoadList.Count; i++)
+        for (int i = 0; i < textAssetLoadList.Count; i++)
         {
-            Load(fileLoadList[i], RESOURCE_TYPE.RESOURCE_FILE);
+            Load(textAssetLoadList[i], RESOURCE_TYPE.RESOURCE_TEXTASSET);
             yield return 0;
         }
 
-        EventManager.Instance.SendEvent(EVT_TYPE.EVT_TYPE_PRELOAD_TOTAL_FINISH);
+        GameManager.Instance.SendEvent(EVT_TYPE.EVT_TYPE_PRELOAD_TOTAL_FINISH);
 
     }
 
-    public GameObject GetResourceObject(string str)
+    /// <summary>
+    /// return null if nothing loaded;
+    /// </summary>
+    /// <param name="str"> path </param>
+    /// <returns></returns>
+    public GameObject GetResourceObject(string path)
     {
-        if (!loadedObjects.ContainsKey(str))
+        if (!loadedObjects.ContainsKey(path))
         {
-            GameObject obj = Resources.Load<GameObject>(str);
-            loadedObjects.Add(str, obj);
+            GameObject obj = Resources.Load<GameObject>(path);
+            if (obj == null)
+            {
+                GameManager.Instance.SendEvent(EVT_TYPE.EVT_TYPE_LOAD_FAILED,path);
+                return null;
+            }
+            loadedObjects.Add(path, obj);
         }
 
         //TODO: what if failed?
 
-        return loadedObjects[str];
+        return loadedObjects[path];
+    }
+
+    /// <summary>
+    /// return null if nothing loaded;
+    /// </summary>
+    /// <param name="str"> path </param>
+    /// <returns></returns>
+    public TextAsset GetResourceTextAsset(string path)
+    {
+        if (!loadedTextAssets.ContainsKey(path))
+        {
+            TextAsset textAsset = Resources.Load<TextAsset>(path);
+            if (textAsset == null)
+            {
+                GameManager.Instance.SendEvent(EVT_TYPE.EVT_TYPE_LOAD_FAILED, path);
+                return null;
+            }
+            loadedTextAssets.Add(path, textAsset);
+        }
+
+        return loadedTextAssets[path];
     }
 
     private void Load(string path, RESOURCE_TYPE type)
@@ -88,6 +120,11 @@ public class ResourceManager : MonoBehaviour {
         {
             case RESOURCE_TYPE.RESOURCE_PREFAB:
                 GameObject obj = Resources.Load<GameObject>(path);
+                if (obj == null)
+                {
+                    GameManager.Instance.SendEvent(EVT_TYPE.EVT_TYPE_LOAD_FAILED,path);
+                    return;
+                }
                 evt.evt_obj.Add(obj);
                 if (!loadedObjects.ContainsKey(path))
                     loadedObjects[path] = obj;
@@ -95,7 +132,13 @@ public class ResourceManager : MonoBehaviour {
             case RESOURCE_TYPE.RESOURCE_TEXTURE:
                 //textureLoadList.Add(path);
                 break;
-            case RESOURCE_TYPE.RESOURCE_FILE:
+            case RESOURCE_TYPE.RESOURCE_TEXTASSET:
+                TextAsset text = Resources.Load<TextAsset>(path);
+                if (text == null)
+                {
+                    GameManager.Instance.SendEvent(EVT_TYPE.EVT_TYPE_LOAD_FAILED,path);
+                    return;
+                }
                 //fileLoadList.Add(path);
                 break;
         }
@@ -109,9 +152,10 @@ public class ResourceManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         loadedObjects = new Dictionary<string, GameObject>(200);
+        loadedTextAssets = new Dictionary<string, TextAsset>(200);
         prefabLoadList = new List<string>(200);
         textureLoadList = new List<string>(200);
-        fileLoadList = new List<string>(200);
+        textAssetLoadList = new List<string>(200);
 	}
 	
 	// Update is called once per frame

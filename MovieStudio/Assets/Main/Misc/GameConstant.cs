@@ -5,7 +5,7 @@ public enum RESOURCE_TYPE
 {
     RESOURCE_PREFAB = 0,
     RESOURCE_TEXTURE,
-    RESOURCE_FILE
+    RESOURCE_TEXTASSET
 }
 
 public enum CHARACTOR_RANK  //temp
