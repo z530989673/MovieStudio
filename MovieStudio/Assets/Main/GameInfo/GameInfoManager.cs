@@ -22,13 +22,13 @@ public class GameInfoManager : MonoBehaviour {
     public GameInfo getGameInfo() { return gameInfo; }
     public PlayerInfo getPlayerInfo() { return playerInfo; }
 
-    //public class TestJsonClass
-    //{
-    //    public int mId;
-    //    public string mTitle;
-    //    public int mTime;
-    //    public float mFloat;
-    //}
+    public class TestJsonClass
+    {
+        public int mId;
+        public string mTitle;
+        public int mTime;
+        public float mFloat;
+    }
 
 	// Use this for initialization
 	void Start () {
@@ -43,11 +43,11 @@ public class GameInfoManager : MonoBehaviour {
         //test.mFloat = 0.5f;
         //Debug.Log(Util.Serialize( typeof(TestJsonClass), test));
 
-        //TestJsonClass test2 = Util.Deserialize<TestJsonClass>(ResourceManager.Instance.GetResourceTextAsset("Data/tes").ToString());
-        //Debug.Log("mid = " + test2.mId);
-        //Debug.Log("mTitle = " + test2.mTitle);
-        //Debug.Log("mTime = " + test2.mTime);
-        //Debug.Log("mFloat = " + test2.mFloat);
+        TestJsonClass test2 = Util.Deserialize<TestJsonClass>(ResourceManager.Instance.GetResourceTextAsset("Data/test").ToString());
+        Debug.Log("mid = " + test2.mId);
+        Debug.Log("mTitle = " + test2.mTitle);
+        Debug.Log("mTime = " + test2.mTime);
+        Debug.Log("mFloat = " + test2.mFloat);
 	}
 	
 	// Update is called once per frame

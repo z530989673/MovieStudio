@@ -1,6 +1,16 @@
-  {
-    "mId": 1,
-    "mTitle": "NYC Brownstone",
-    "mTime": 1446059986,
-    "mFloat": 0.1
-  }
+{
+    "asd": [
+        {
+            "mId": 1,
+            "mTitle": "NYC Brownstone",
+            "mTime": 1446059986,
+            "mFloat": 0.1
+        },
+        {
+            "mId": 2,
+            "mTitle": "lkjh",
+            "mTime": 3546984,
+            "mFloat": 0.1534
+        }
+    ]
+}
