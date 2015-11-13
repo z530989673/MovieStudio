@@ -59,7 +59,10 @@ public class EventManager : MonoBehaviour {
 
         BindEvent(EVT_TYPE.EVT_TYPE_DEFAULT, new Handler(DefaultEventHandler.Handle));
         BindEvent(EVT_TYPE.EVT_TYPE_ENTER_GAME, new Handler(EnterGameEventHandler.Handle));
-        BindEvent(EVT_TYPE.EVT_TYPE_MAKEMOVIE, new Handler(DefaultEventHandler.MakeMovie));
+		BindEvent(EVT_TYPE.EVT_TYPE_MAKE_MOVIE, new Handler(DefaultEventHandler.MakeMovie));
+		BindEvent(EVT_TYPE.EVT_TYPE_MAKING_MOVIE, new Handler(DefaultEventHandler.MakingMovie));
+		BindEvent(EVT_TYPE.EVT_TYPE_AFTERMAKING_MOVIE, new Handler(DefaultEventHandler.AfterMakingMovie));
+		BindEvent(EVT_TYPE.EVT_TYPE_FINISHMAKING_MOVIE, new Handler(DefaultEventHandler.FinishMakingMovie));
         BindEvent(EVT_TYPE.EVT_TYPE_LOAD_FAILED, new Handler(LoadEventHandler.LoadFailed));
     }
 

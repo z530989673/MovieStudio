@@ -42,7 +42,7 @@ public class TopBarController : ViewController {
 			m_ExternalPlan = menuGroup.FindChild("ExternalPlan").gameObject;
 
 
-			m_MakeMovie.GetComponent<Button>().onClick.AddListener( delegate { Debug.Log("set!"); SendEvent(EVT_TYPE.EVT_TYPE_MAKEMOVIE); } );
+			m_MakeMovie.GetComponent<Button>().onClick.AddListener( delegate { Debug.Log("set!"); SendEvent(EVT_TYPE.EVT_TYPE_MAKE_MOVIE); CloseAll(); } );
 
 
 			m_DropMenu.SetActive(false);
@@ -59,5 +59,10 @@ public class TopBarController : ViewController {
 	// Update is called once per frame
 	void Update () {
 	
+	}
+
+	public void CloseAll()
+	{
+		m_DropMenu.SetActive(false);
 	}
 }

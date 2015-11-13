@@ -44,8 +44,8 @@ public class NewMoviePopUpController : ViewController {
 			if(childIndex+1 == transform.childCount)
 			{
 				// may send different event type in future: make movie done?
-				SendEvent(EVT_TYPE.EVT_TYPE_MAKEMOVIE);
-				Debug.Log("Movie Make!");
+				SendEvent(EVT_TYPE.EVT_TYPE_MAKING_MOVIE);
+				Debug.Log("Start to make Movie!");
 			}
 			else
 			{

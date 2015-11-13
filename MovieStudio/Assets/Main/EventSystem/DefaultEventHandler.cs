@@ -12,4 +12,19 @@ public class DefaultEventHandler {
 	{
 		UIManager.Instance.MakeMovie();
 	}
+
+	public static void MakingMovie(Event evt)
+	{
+		UIManager.Instance.MakingMovie();
+	}
+
+	public static void AfterMakingMovie(Event evt)
+	{
+		UIManager.Instance.AfterMakingMovie();
+	}
+
+	public static void FinishMakingMovie(Event evt)
+	{
+		UIManager.Instance.FinishMakingMovie();
+	}
 }

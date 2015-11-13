@@ -28,6 +28,7 @@ public class UIManager : MonoBehaviour {
             m_canvasList = m_canvas.GetComponent<CanvasList>();
             m_canvasList.OpenScreen("LoadingScreen");
 			m_canvasList.LoadOverlay("TopBar");
+			m_canvasList.LoadOverlay("MovieMaking");
         }
     }
 
@@ -56,6 +57,27 @@ public class UIManager : MonoBehaviour {
 	{
 		GameObject newMovie = m_canvasList.LoadPopUp("NewMoviePopUp");
 		m_canvasList.SetPopupEnable("NewMoviePopUp", !newMovie.activeInHierarchy);
+	}
+
+	public void MakingMovie()
+	{
+		m_canvasList.LoadPopUp("NewMoviePopUp");
+		m_canvasList.SetPopupEnable("NewMoviePopUp", false);
+
+		m_canvasList.SetOverlayEnable("MovieMaking", true);
+	}
+
+	public void AfterMakingMovie()
+	{
+		m_canvasList.SetOverlayEnable("MovieMaking", false);
+		
+		m_canvasList.LoadPopUp("AfterEffectPopUp");
+		m_canvasList.SetPopupEnable("AfterEffectPopUp", true);
+	}
+
+	public void FinishMakingMovie()
+	{
+		m_canvasList.SetPopupEnable("AfterEffectPopUp", false);
 	}
 
 }
