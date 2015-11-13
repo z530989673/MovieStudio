@@ -122,4 +122,31 @@ public class CanvasList : MonoBehaviour {
 		}
 	}
 
+	public GameObject GetScreen(string name)
+	{
+		if(m_screens.ContainsKey(name))
+		{
+			return m_screens[name];
+		}
+		return null;
+	}
+
+	public GameObject GetOverlay(string name)
+	{
+		if(m_overlays.ContainsKey(name))
+		{
+			return m_overlays[name];
+		}
+		return null;
+	}
+
+	public GameObject GetPopUp(string name)
+	{
+		if(m_popups.ContainsKey(name))
+		{
+			return m_popups[name];
+		}
+		return null;
+	}
+
 }

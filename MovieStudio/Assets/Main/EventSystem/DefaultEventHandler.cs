@@ -18,13 +18,18 @@ public class DefaultEventHandler {
 		UIManager.Instance.MakingMovie();
 	}
 
-	public static void AfterMakingMovie(Event evt)
+	public static void AfterEffectStart(Event evt)
 	{
-		UIManager.Instance.AfterMakingMovie();
+		UIManager.Instance.AfterEffectStart();
 	}
 
-	public static void FinishMakingMovie(Event evt)
+	public static void AfterEffectWorkerChoosen(Event evt)
 	{
-		UIManager.Instance.FinishMakingMovie();
+		UIManager.Instance.AfterEffectWorkerChoosen();
+	}
+
+	public static void MovieDone(Event evt)
+	{
+		UIManager.Instance.MovieDone();
 	}
 }
