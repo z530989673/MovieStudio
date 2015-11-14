@@ -22,7 +22,7 @@ public class AfterEffectPopUpController : ViewController {
 			go.transform.SetParent(m_group.transform, false);
 		}
 		m_start.onClick.AddListener( delegate {
-			SendEvent(EVT_TYPE.EVT_TYPE_FINISHMAKING_MOVIE);
+			SendEvent(EVT_TYPE.EVT_TYPE_AE_WORKER_CHOOSEN);
 		});
 	}
 

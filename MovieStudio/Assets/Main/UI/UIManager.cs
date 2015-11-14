@@ -65,9 +65,11 @@ public class UIManager : MonoBehaviour {
 		m_canvasList.SetPopupEnable("NewMoviePopUp", false);
 
 		m_canvasList.SetOverlayEnable("MovieMaking", true);
+		MovieMakingController mmc = m_canvasList.GetOverlay("MovieMaking").GetComponent<MovieMakingController>();
+		mmc.movieStatus = MovieMakingController.MovieStatus.Making;
 	}
 
-	public void AfterMakingMovie()
+	public void AfterEffectStart()
 	{
 		m_canvasList.SetOverlayEnable("MovieMaking", false);
 		
@@ -75,9 +77,17 @@ public class UIManager : MonoBehaviour {
 		m_canvasList.SetPopupEnable("AfterEffectPopUp", true);
 	}
 
-	public void FinishMakingMovie()
+	public void AfterEffectWorkerChoosen()
 	{
 		m_canvasList.SetPopupEnable("AfterEffectPopUp", false);
+		m_canvasList.SetOverlayEnable("MovieMaking", true);
+		MovieMakingController mmc = m_canvasList.GetOverlay("MovieMaking").GetComponent<MovieMakingController>();
+		mmc.movieStatus = MovieMakingController.MovieStatus.AfterEffect;
+	}
+
+	public void MovieDone()
+	{
+		m_canvasList.SetOverlayEnable("MovieMaking", false);
 	}
 
 }
