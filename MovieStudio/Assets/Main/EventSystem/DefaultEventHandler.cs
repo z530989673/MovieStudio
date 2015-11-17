@@ -32,4 +32,14 @@ public class DefaultEventHandler {
 	{
 		UIManager.Instance.MovieDone();
 	}
+
+	public static void PublishMovie(Event evt)
+	{
+		UIManager.Instance.PublishMovie();
+	}
+
+	public static void AddAdvertisement(Event evt)
+	{
+		UIManager.Instance.AddAdvertisement();
+	}
 }

@@ -88,6 +88,18 @@ public class UIManager : MonoBehaviour {
 	public void MovieDone()
 	{
 		m_canvasList.SetOverlayEnable("MovieMaking", false);
+		m_canvasList.LoadPopUp("MovieDonePopUp");
+		m_canvasList.SetPopupEnable("MovieDonePopUp", true);
+	}
+
+	public void PublishMovie()
+	{
+		m_canvasList.SetPopupEnable("MovieDonePopUp", false);
+	}
+
+	public void AddAdvertisement()
+	{
+		Debug.Log("doing nothing right now...");
 	}
 
 }

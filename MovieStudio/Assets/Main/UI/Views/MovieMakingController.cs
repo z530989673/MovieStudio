@@ -13,7 +13,7 @@ public class MovieMakingController : ViewController {
 	}
 
 	public float m_progress;
-	private float m_speed = 10;
+	private float m_speed = 30;
 	public Text m_progressText;
 	private MovieStatus m_movieStatus;
 	public MovieStatus movieStatus{ get { return m_movieStatus;} set{ m_movieStatus = value;}}
