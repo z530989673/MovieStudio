@@ -27,7 +27,9 @@ public class UIManager : MonoBehaviour {
             m_canvas = canvas;
             m_canvasList = m_canvas.GetComponent<CanvasList>();
             m_canvasList.OpenScreen("LoadingScreen");
-			m_canvasList.LoadOverlay("TopBar");
+			
+            // should be after resource are loaded.....
+            m_canvasList.LoadOverlay("TopBar");
 			m_canvasList.LoadOverlay("MovieMaking");
         }
     }

@@ -54,8 +54,8 @@ public class EventManager : MonoBehaviour {
 
     void Awake()
     {
-        m_eventsQueue = new Queue(100);
-        m_callBacks = new Dictionary<EVT_TYPE, Handler>(200);
+        m_eventsQueue = new Queue((int)EVT_TYPE.EVT_TYPE_MAX);
+        m_callBacks = new Dictionary<EVT_TYPE, Handler>((int)EVT_TYPE.EVT_TYPE_MAX);
 
         BindEvent(EVT_TYPE.EVT_TYPE_DEFAULT, new Handler(DefaultEventHandler.Handle));
         BindEvent(EVT_TYPE.EVT_TYPE_ENTER_GAME, new Handler(EnterGameEventHandler.Handle));

@@ -18,10 +18,9 @@ public class ResourceManager : MonoBehaviour {
     }
 
     private Dictionary<string, GameObject> loadedObjects;
+    private Dictionary<string, Sprite> loadedSprites;
     private Dictionary<string, TextAsset> loadedTextAssets;
-    // There may have more things that should be loaded at the very beginning
-    // like config files and game data and textures!!! But, temporarily, I
-    // can't find any good type to represent them.
+
     private List<string> prefabLoadList;
     private List<string> textureLoadList;
     private List<string> textAssetLoadList;
@@ -80,7 +79,7 @@ public class ResourceManager : MonoBehaviour {
             GameObject obj = Resources.Load<GameObject>(path);
             if (obj == null)
             {
-                GameManager.Instance.SendEvent(EVT_TYPE.EVT_TYPE_LOAD_FAILED,path);
+                GameManager.Instance.SendEvent(EVT_TYPE.EVT_TYPE_LOAD_FAILED, path);
                 return null;
             }
             loadedObjects.Add(path, obj);
@@ -89,6 +88,29 @@ public class ResourceManager : MonoBehaviour {
         //TODO: what if failed?
 
         return loadedObjects[path];
+    }
+
+    /// <summary>
+    /// return null if nothing loaded;
+    /// </summary>
+    /// <param name="str"> path </param>
+    /// <returns></returns>
+    public Sprite GetResourceSprite(string path)
+    {
+        if (!loadedSprites.ContainsKey(path))
+        {
+            Sprite sprt = Resources.Load<Sprite>(path);
+            if (sprt == null)
+            {
+                GameManager.Instance.SendEvent(EVT_TYPE.EVT_TYPE_LOAD_FAILED, path);
+                return null;
+            }
+            loadedSprites.Add(path, sprt);
+        }
+
+        //TODO: what if failed?
+
+        return loadedSprites[path];
     }
 
     /// <summary>
@@ -130,7 +152,15 @@ public class ResourceManager : MonoBehaviour {
                     loadedObjects[path] = obj;
                 break;
             case RESOURCE_TYPE.RESOURCE_TEXTURE:
-                //textureLoadList.Add(path);
+                Sprite sprite = Resources.Load<Sprite>(path);
+                if (sprite == null)
+                {
+                    GameManager.Instance.SendEvent(EVT_TYPE.EVT_TYPE_LOAD_FAILED,path);
+                    return;
+                }
+                evt.evt_obj.Add(sprite);
+                if (!loadedSprites.ContainsKey(path))
+                    loadedSprites[path] = sprite;
                 break;
             case RESOURCE_TYPE.RESOURCE_TEXTASSET:
                 TextAsset text = Resources.Load<TextAsset>(path);
@@ -139,7 +169,9 @@ public class ResourceManager : MonoBehaviour {
                     GameManager.Instance.SendEvent(EVT_TYPE.EVT_TYPE_LOAD_FAILED,path);
                     return;
                 }
-                //fileLoadList.Add(path);
+                evt.evt_obj.Add(text);
+                if (!loadedTextAssets.ContainsKey(path))
+                    loadedTextAssets[path] = text;
                 break;
         }
 
@@ -152,9 +184,10 @@ public class ResourceManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         loadedObjects = new Dictionary<string, GameObject>(200);
+        loadedSprites = new Dictionary<string, Sprite>(500);
         loadedTextAssets = new Dictionary<string, TextAsset>(200);
         prefabLoadList = new List<string>(200);
-        textureLoadList = new List<string>(200);
+        textureLoadList = new List<string>(500);
         textAssetLoadList = new List<string>(200);
 	}
 	

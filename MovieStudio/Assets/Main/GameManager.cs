@@ -53,12 +53,13 @@ public class GameManager : MonoBehaviour {
 
     void startPreLoad()
     {
-        for (int i = 0; i < 25; i++)//temp
-        {
-            ResourceManager.Instance.AddPreLoadResource(RESOURCE_TYPE.RESOURCE_PREFAB, "UI/Prefabs/MainScreen");
-            ResourceManager.Instance.AddPreLoadResource(RESOURCE_TYPE.RESOURCE_PREFAB, "UI/Prefabs/TopBar");
-            ResourceManager.Instance.AddPreLoadResource(RESOURCE_TYPE.RESOURCE_PREFAB, "UI/Prefabs/WelcomeScreen");
-        }
+        ResourceManager.Instance.AddPreLoadResource(RESOURCE_TYPE.RESOURCE_PREFAB, "UI/Prefabs/MainScreen");
+        ResourceManager.Instance.AddPreLoadResource(RESOURCE_TYPE.RESOURCE_PREFAB, "UI/Prefabs/TopBar");
+        ResourceManager.Instance.AddPreLoadResource(RESOURCE_TYPE.RESOURCE_PREFAB, "UI/Prefabs/WelcomeScreen");
+
+        ResourceManager.Instance.AddPreLoadResource(RESOURCE_TYPE.RESOURCE_TEXTURE, "UI/Textures/board");
+        ResourceManager.Instance.AddPreLoadResource(RESOURCE_TYPE.RESOURCE_TEXTURE, "UI/Textures/chair");
+        ResourceManager.Instance.AddPreLoadResource(RESOURCE_TYPE.RESOURCE_TEXTURE, "UI/Textures/wall");
 
         StartCoroutine(ResourceManager.Instance.StartPreLoad());
     }
