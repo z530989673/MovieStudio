@@ -58,17 +58,17 @@ public class EventManager : MonoBehaviour {
         m_callBacks = new Dictionary<EVT_TYPE, Handler>((int)EVT_TYPE.EVT_TYPE_MAX);
 
         BindEvent(EVT_TYPE.EVT_TYPE_DEFAULT, new Handler(DefaultEventHandler.Handle));
-        BindEvent(EVT_TYPE.EVT_TYPE_ENTER_GAME, new Handler(EnterGameEventHandler.Handle));
-		BindEvent(EVT_TYPE.EVT_TYPE_MAKE_MOVIE, new Handler(DefaultEventHandler.MakeMovie));
-		BindEvent(EVT_TYPE.EVT_TYPE_MAKING_MOVIE, new Handler(DefaultEventHandler.MakingMovie));
-		BindEvent(EVT_TYPE.EVT_TYPE_AE_START, new Handler(DefaultEventHandler.AfterEffectStart));
-		BindEvent(EVT_TYPE.EVT_TYPE_AE_WORKER_CHOOSEN, new Handler(DefaultEventHandler.AfterEffectWorkerChoosen));
+
+        BindEvent(EVT_TYPE.EVT_TYPE_ENTER_GAME, new Handler(GameLoopEventHandler.EnterGame));
+        BindEvent(EVT_TYPE.EVT_TYPE_MAKE_MOVIE, new Handler(GameLoopEventHandler.MakeMovie));
+        BindEvent(EVT_TYPE.EVT_TYPE_MAKING_MOVIE, new Handler(GameLoopEventHandler.MakingMovie));
+        BindEvent(EVT_TYPE.EVT_TYPE_AE_START, new Handler(GameLoopEventHandler.AfterEffectStart));
+        BindEvent(EVT_TYPE.EVT_TYPE_AE_WORKER_CHOOSEN, new Handler(GameLoopEventHandler.AfterEffectWorkerChoosen));
+        BindEvent(EVT_TYPE.EVT_TYPE_MOVIE_DONE, new Handler(GameLoopEventHandler.MovieDone));
+        BindEvent(EVT_TYPE.EVT_TYPE_MOVIE_PUBLISH, new Handler(GameLoopEventHandler.PublishMovie));
+        BindEvent(EVT_TYPE.EVT_TYPE_ADD_ADVERTISEMENT, new Handler(GameLoopEventHandler.AddAdvertisement));
+
         BindEvent(EVT_TYPE.EVT_TYPE_LOAD_FAILED, new Handler(LoadEventHandler.LoadFailed));
-		BindEvent(EVT_TYPE.EVT_TYPE_MOVIE_DONE, new Handler(DefaultEventHandler.MovieDone));
-		BindEvent(EVT_TYPE.EVT_TYPE_MOVIE_PUBLISH, new Handler(DefaultEventHandler.PublishMovie));
-		BindEvent(EVT_TYPE.EVT_TYPE_ADD_ADVERTISEMENT, new Handler(DefaultEventHandler.AddAdvertisement));
-
-
     }
 
 	// Use this for initialization

@@ -53,13 +53,29 @@ public class GameManager : MonoBehaviour {
 
     void startPreLoad()
     {
+        //basic prefabs
+        ResourceManager.Instance.AddPreLoadResource(RESOURCE_TYPE.RESOURCE_PREFAB, "UI/Prefabs/ItemButton");//really need to load this?
+        ResourceManager.Instance.AddPreLoadResource(RESOURCE_TYPE.RESOURCE_PREFAB, "UI/Prefabs/SceneItem");
+
+        //screen
         ResourceManager.Instance.AddPreLoadResource(RESOURCE_TYPE.RESOURCE_PREFAB, "UI/Prefabs/MainScreen");
-        ResourceManager.Instance.AddPreLoadResource(RESOURCE_TYPE.RESOURCE_PREFAB, "UI/Prefabs/TopBar");
         ResourceManager.Instance.AddPreLoadResource(RESOURCE_TYPE.RESOURCE_PREFAB, "UI/Prefabs/WelcomeScreen");
 
+        //overlay
+        ResourceManager.Instance.AddPreLoadResource(RESOURCE_TYPE.RESOURCE_PREFAB, "UI/Prefabs/TopBar");
+        ResourceManager.Instance.AddPreLoadResource(RESOURCE_TYPE.RESOURCE_PREFAB, "UI/Prefabs/MovieMaking");
+
+        //popup
+        ResourceManager.Instance.AddPreLoadResource(RESOURCE_TYPE.RESOURCE_PREFAB, "UI/Prefabs/AfterEffectPopUp");
+        ResourceManager.Instance.AddPreLoadResource(RESOURCE_TYPE.RESOURCE_PREFAB, "UI/Prefabs/MovieDonePopUp");
+        ResourceManager.Instance.AddPreLoadResource(RESOURCE_TYPE.RESOURCE_PREFAB, "UI/Prefabs/NewMoviePopUp");
+
+        //texture
         ResourceManager.Instance.AddPreLoadResource(RESOURCE_TYPE.RESOURCE_TEXTURE, "UI/Textures/board");
         ResourceManager.Instance.AddPreLoadResource(RESOURCE_TYPE.RESOURCE_TEXTURE, "UI/Textures/chair");
         ResourceManager.Instance.AddPreLoadResource(RESOURCE_TYPE.RESOURCE_TEXTURE, "UI/Textures/wall");
+
+        //TODO: data
 
         StartCoroutine(ResourceManager.Instance.StartPreLoad());
     }
