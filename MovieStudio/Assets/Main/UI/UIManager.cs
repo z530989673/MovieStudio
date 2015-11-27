@@ -28,11 +28,13 @@ public class UIManager : MonoBehaviour {
         }
     }
 
-    public void Init()
+    public void PreInit()
     {
         OpenScreen("LoadingScreen");
-			
-        // should be after resource are loaded.....
+    }
+
+    public void Init()
+    {
         LoadOverlay("TopBar");
 		LoadOverlay("MovieMaking");
     }

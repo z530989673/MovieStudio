@@ -26,6 +26,11 @@ public class SceneManager : MonoBehaviour {
 	
 	}
 	
+    public void Init()
+    {
+
+    }
+
 	// Update is called once per frame
 	void Update () {
 	

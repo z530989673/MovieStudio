@@ -76,13 +76,19 @@ public class GameManager : MonoBehaviour {
         ResourceManager.Instance.AddPreLoadResource(RESOURCE_TYPE.RESOURCE_TEXTURE, "UI/Textures/wall");
 
         //TODO: data
+        ResourceManager.Instance.AddPreLoadResource(RESOURCE_TYPE.RESOURCE_TEXTASSET, "Data/GameData/Item");
+        ResourceManager.Instance.AddPreLoadResource(RESOURCE_TYPE.RESOURCE_TEXTASSET, "Data/GameData/Room");
 
         StartCoroutine(ResourceManager.Instance.StartPreLoad());
     }
 
 	// Use this for initialization
-	void Start () {
-        UIManager.Instance.Init();
+    void Start()
+    {
+        // open loading screen
+        UIManager.Instance.PreInit();
+
+        // pre load everying that we may need
         startPreLoad();
 	}
 	

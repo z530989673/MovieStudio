@@ -19,14 +19,17 @@ public class GameInfoManager : MonoBehaviour {
 
     private GameInfo gameInfo;
     private PlayerInfo playerInfo;
+    private GameData gameData;
 
     public GameInfo getGameInfo() { return gameInfo; }
     public PlayerInfo getPlayerInfo() { return playerInfo; }
+    public GameData getGameData() { return gameData; }
 
 	// Use this for initialization
 	void Start () {
         gameInfo = new GameInfo();
         playerInfo = new PlayerInfo();
+        gameData = new GameData();
 
         //// For Basic Json parser functions :)
         //TestJsonClass test = new TestJsonClass();
@@ -40,6 +43,12 @@ public class GameInfoManager : MonoBehaviour {
 
 	}
 	
+    public void Init()
+    {
+        gameData.roomData = Util.Deserialize<List<RoomData>>(ResourceManager.Instance.GetResourceTextAsset("Data/GameData/Room").ToString());
+        gameData.itemData = Util.Deserialize<List<ItemData>>(ResourceManager.Instance.GetResourceTextAsset("Data/GameData/Item").ToString());
+    }
+
 	// Update is called once per frame
 	void Update () {
 	

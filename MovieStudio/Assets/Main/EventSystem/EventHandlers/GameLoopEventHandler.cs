@@ -4,6 +4,11 @@ using System.Collections;
 public class GameLoopEventHandler{
     public static void EnterGame(Event evt)
     {
+        // init the whole the system
+        UIManager.Instance.Init();
+        GameInfoManager.Instance.Init();
+        SceneManager.Instance.Init();
+
         UIManager.Instance.OpenScreen("MainScreen");
         UIManager.Instance.SetOverlayEnable("TopBar", true);
     }
