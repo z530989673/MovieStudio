@@ -5,6 +5,11 @@ public class Pair
 {
     public int x = -1;
     public int y = -1;
+    public Pair(int intX, int intY)
+    {
+        this.x = intX;
+        this.y = intY;
+    }
 }
 
 public enum DOOR_DIR

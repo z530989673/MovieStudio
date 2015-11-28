@@ -25,6 +25,8 @@ public class GameInfoManager : MonoBehaviour {
     public PlayerInfo getPlayerInfo() { return playerInfo; }
     public GameData getGameData() { return gameData; }
 
+    public List<RoomData> getRoomData() { return gameData.roomData; }
+
 	// Use this for initialization
 	void Start () {
         gameInfo = new GameInfo();
@@ -45,8 +47,8 @@ public class GameInfoManager : MonoBehaviour {
 	
     public void Init()
     {
-        gameData.roomData = Util.Deserialize<List<RoomData>>(ResourceManager.Instance.GetResourceTextAsset("Data/GameData/Room").ToString());
-        gameData.itemData = Util.Deserialize<List<ItemData>>(ResourceManager.Instance.GetResourceTextAsset("Data/GameData/Item").ToString());
+        gameData.roomData = Util.Deserialize<List<RoomData>>(GameManager.Instance.GetResourceTextAsset("Data/GameData/Room").ToString());
+        gameData.itemData = Util.Deserialize<List<ItemData>>(GameManager.Instance.GetResourceTextAsset("Data/GameData/Item").ToString());
     }
 
 	// Update is called once per frame

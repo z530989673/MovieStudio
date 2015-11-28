@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour {
 
@@ -16,9 +17,19 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    public GameObject GetResourceObject(string str)
+    public GameObject GetResourceObject(string path)
     {
-        return ResourceManager.Instance.GetResourceObject(str);
+        return ResourceManager.Instance.GetResourceObject(path);
+    }
+
+    public TextAsset GetResourceTextAsset(string path)
+    {
+        return ResourceManager.Instance.GetResourceTextAsset(path);
+    }
+
+    public Sprite GetResourceSprite(string path)
+    {
+        return ResourceManager.Instance.GetResourceSprite(path);
     }
 
     /// <summary>
@@ -50,6 +61,8 @@ public class GameManager : MonoBehaviour {
     {
         EventManager.Instance.SendEvent(evt);
     }
+
+    public List<RoomData> GetRoomData() { return GameInfoManager.Instance.getRoomData(); }
 
     void startPreLoad()
     {
