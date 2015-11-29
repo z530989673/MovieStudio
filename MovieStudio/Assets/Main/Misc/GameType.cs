@@ -10,6 +10,11 @@ public class Pair
         this.x = intX;
         this.y = intY;
     }
+
+    public static Pair operator +(Pair value1, Pair value2)
+    {
+        return new Pair(value1.x + value2.x, value1.y + value2.y);
+    }
 }
 
 public enum DOOR_DIR

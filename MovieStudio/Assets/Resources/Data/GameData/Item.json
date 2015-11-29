@@ -1,14 +1,14 @@
  [
         {
-            "ID": 1,
+            "ID": 0,
             "spritePath": "UI/Textures/board"
         },
         {
-            "ID": 2,
+            "ID": 1,
             "spritePath": "UI/Textures/chair"
         },
         {
-            "ID": 3,
+            "ID": 2,
             "spritePath": "UI/Textures/wall"
         }
 ]

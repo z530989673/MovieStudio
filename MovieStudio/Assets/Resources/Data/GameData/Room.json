@@ -8,8 +8,9 @@
             "doorPosOffset":{"x": 3,"y": 0},
             "doorDir" : 2,
             "hasWall" : true,
-            "itemIDs" : [[3],[3,3]],
+            "itemIDs" : [[1],[1,1]],
             "itemsOffset" : [[{"x": 0,"y": 1}],[{"x": 1,"y": 1},{"x": 3,"y": 4}]],
+            "itemsRevert" : [[false],[false,true]],
             "unlockCost" : []
         }
 ]

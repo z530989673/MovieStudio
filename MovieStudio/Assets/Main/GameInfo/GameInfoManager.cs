@@ -25,7 +25,8 @@ public class GameInfoManager : MonoBehaviour {
     public PlayerInfo getPlayerInfo() { return playerInfo; }
     public GameData getGameData() { return gameData; }
 
-    public List<RoomData> getRoomData() { return gameData.roomData; }
+    public List<RoomData> GetRoomData() { return gameData.roomData; }
+    public List<ItemData> GetItemData() { return gameData.itemData; }
 
 	// Use this for initialization
 	void Start () {

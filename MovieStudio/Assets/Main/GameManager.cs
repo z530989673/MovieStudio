@@ -62,7 +62,8 @@ public class GameManager : MonoBehaviour {
         EventManager.Instance.SendEvent(evt);
     }
 
-    public List<RoomData> GetRoomData() { return GameInfoManager.Instance.getRoomData(); }
+    public List<RoomData> GetRoomData() { return GameInfoManager.Instance.GetRoomData(); }
+    public List<ItemData> GetItemData() { return GameInfoManager.Instance.GetItemData(); }
 
     void startPreLoad()
     {

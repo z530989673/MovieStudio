@@ -13,6 +13,7 @@ public class RoomData {
     public bool hasWall = true;
     public List<List<int>> itemIDs;
     public List<List<Pair>> itemsOffset;
+    public List<List<bool>> itemsRevert;
     public List<int> unlockCost;
 
 }

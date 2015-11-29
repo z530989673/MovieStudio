@@ -17,6 +17,9 @@ public class SceneManager : MonoBehaviour {
         }
     }
 
+    public GameObject board;
+    public GameObject Rooms;
+
     Board gameBoard;
     List<SceneCharactor> charactors;
     List<Room> rooms;
@@ -32,12 +35,12 @@ public class SceneManager : MonoBehaviour {
     {
         List<RoomData> roomData = GameManager.Instance.GetRoomData();
 
-        gameBoard.Init(roomData[0].size);
+        gameBoard.Init(roomData[0].size, board);
 
         for (int i = 0; i < roomData.Count; i++)
         {
-            Room room = new Room();
-            room.ResetRoom(roomData[i], 0);
+            Room room = new Room(Rooms);
+            room.ResetRoom(roomData[i], 1);
             rooms.Add(room);
         }
 
