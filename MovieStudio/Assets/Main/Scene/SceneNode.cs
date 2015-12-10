@@ -6,15 +6,17 @@ public class SceneNode {
     protected GameObject gameObject;
     protected GameObject parent;
     protected Pair coord;
+    public int order;
 
     public SceneNode(GameObject p)
     {
         parent = p;
     }
 
-    public void Reset(Pair pos, int order = 0, bool revert = false, string path = "")
+    virtual public void Reset(Pair pos, int ord = 0, bool revert = false, string path = "")
     {
         coord = pos;
+        order = ord;
         if (gameObject == null)
         {
             gameObject = GameObject.Instantiate(GameManager.Instance.GetResourceObject("UI/Prefabs/SceneItem"));
@@ -27,7 +29,7 @@ public class SceneNode {
         
         if (revert)
             gameObject.transform.Rotate(0, 180, 0);
-        gameObject.GetComponent<SpriteRenderer>().sortingOrder = order;
+        gameObject.GetComponent<SpriteRenderer>().sortingOrder = ord;
 
         Vector2 actualPos = SceneManager.Instance.GetActualPos(coord);
         gameObject.transform.position = new Vector3(actualPos.x, actualPos.y,0);
