@@ -23,7 +23,6 @@ public class GameLoopEventHandler{
 
     public static void MakingMovie(Event evt)
     {
-        UIManager.Instance.LoadPopUp("NewMoviePopUp");
         UIManager.Instance.SetPopupEnable("NewMoviePopUp", false);
 
         UIManager.Instance.SetOverlayEnable("MovieMaking", true);
@@ -35,7 +34,6 @@ public class GameLoopEventHandler{
     {
         UIManager.Instance.SetOverlayEnable("MovieMaking", false);
 
-        UIManager.Instance.LoadPopUp("AfterEffectPopUp");
         UIManager.Instance.SetPopupEnable("AfterEffectPopUp", true);
     }
 
@@ -50,7 +48,6 @@ public class GameLoopEventHandler{
     public static void MovieDone(Event evt)
     {
         UIManager.Instance.SetOverlayEnable("MovieMaking", false);
-        UIManager.Instance.LoadPopUp("MovieDonePopUp");
         UIManager.Instance.SetPopupEnable("MovieDonePopUp", true);
     }
 
@@ -63,4 +60,9 @@ public class GameLoopEventHandler{
     {
         Debug.Log("doing nothing right now...");
     }
+
+	public static void MovieSite(Event evt)
+	{
+		UIManager.Instance.SetPopupEnable("MovieSitePopUp", true);
+	}
 }

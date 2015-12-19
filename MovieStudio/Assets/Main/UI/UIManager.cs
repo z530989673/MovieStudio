@@ -144,6 +144,11 @@ public class UIManager : MonoBehaviour {
 			m_popup.transform.GetChild(0).gameObject.SetActive(enabled);
 			m_popups[name].SetActive(enabled);
 		}
+		else
+		{
+			LoadPopUp(name);
+			SetPopupEnable(name, enabled);
+		}
 	}
 
 	public void CloseAllPopUps()
