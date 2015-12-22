@@ -52,7 +52,7 @@ public class SceneManager : MonoBehaviour {
 	
 	}
 
-    public Vector2 GetActualPos(Pair coord)
+    static public Vector2 GetActualPos(Pair coord)
     {
         Vector2 result;
         result.x = - coord.x * 0.5f + coord.y * 0.5f;

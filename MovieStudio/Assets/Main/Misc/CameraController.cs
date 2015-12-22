@@ -7,9 +7,16 @@ public class CameraController : MonoBehaviour {
 	void Start () {
 	
 	}
-    public float speed = 0.1F;
+    public float speed = 10.0f;
 	// Update is called once per frame
-	void Update () {
+    void Update()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            float mousX = Input.GetAxis("Mouse X");
+            float mousY = Input.GetAxis("Mouse Y");
+            transform.Translate(-mousX * speed, -mousY * speed, 0);
+        }
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
         {
             // Get movement of the finger since last frame

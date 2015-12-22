@@ -31,7 +31,7 @@ public class SceneNode {
             gameObject.transform.Rotate(0, 180, 0);
         gameObject.GetComponent<SpriteRenderer>().sortingOrder = ord;
 
-        Vector2 actualPos = SceneManager.Instance.GetActualPos(coord);
+        Vector2 actualPos = SceneManager.GetActualPos(coord);
         gameObject.transform.position = new Vector3(actualPos.x, actualPos.y,0);
     }
 
