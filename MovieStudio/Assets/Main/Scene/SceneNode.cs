@@ -13,7 +13,7 @@ public class SceneNode {
         parent = p;
     }
 
-    virtual public void Reset(Pair pos, int ord = 0, bool revert = false, string path = "")
+    protected void Reset(Pair pos, int ord = 0, bool revert = false, string path = "")
     {
         coord = pos;
         order = ord;

@@ -11,6 +11,7 @@ public class RoomData {
     public Pair doorPosOffset;
     public DOOR_DIR doorDir = DOOR_DIR.NONE;
     public bool hasWall = true;
+    public int boardID;
     public List<List<int>> itemIDs;
     public List<List<Pair>> itemsOffset;
     public List<List<bool>> itemsRevert;

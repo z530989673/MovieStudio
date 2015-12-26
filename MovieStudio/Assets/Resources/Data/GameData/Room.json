@@ -1,6 +1,6 @@
  [
         {
-            "ID": 1,
+            "ID": 0,
             "name": "会客厅",
             "botRight":{"x": 0,"y": 0},
             "size":{"x": 20,"y": 20},
@@ -8,9 +8,40 @@
             "doorPosOffset":{"x": 3,"y": 0},
             "doorDir" : 2,
             "hasWall" : true,
+            "boardID": 0,
+            "itemIDs" : [[1],[1,1]],
+            "itemsOffset" : [[{"x": 0,"y": 1}],[{"x": 10,"y": 10},{"x": 13,"y": 14}]],
+            "itemsRevert" : [[false],[false,true]],
+            "unlockCost" : []
+        }        
+        {
+            "ID": 1,
+            "name": "会客厅",
+            "botRight":{"x": 1,"y": 1},
+            "size":{"x": 5,"y": 5},
+            "handlePosOffset":{"x": 2,"y": 2},
+            "doorPosOffset":{"x": 3,"y": 0},
+            "doorDir" : 2,
+            "hasWall" : true,
+            "boardID": 3,
             "itemIDs" : [[1],[1,1]],
             "itemsOffset" : [[{"x": 0,"y": 1}],[{"x": 1,"y": 1},{"x": 3,"y": 4}]],
             "itemsRevert" : [[false],[false,true]],
+            "unlockCost" : []
+        }
+        {
+            "ID": 2,
+            "name": "会客厅",
+            "botRight":{"x": 6,"y": 10},
+            "size":{"x": 3,"y": 7},
+            "handlePosOffset":{"x": 2,"y": 2},
+            "doorPosOffset":{"x": 3,"y": 0},
+            "doorDir" : 2,
+            "hasWall" : true,
+            "boardID": 3,
+            "itemIDs" : [[1],[1,1,1]],
+            "itemsOffset" : [[{"x": 0,"y": 1}],[{"x": 0,"y": 1},{"x": 1,"y": 2},{"x": 2,"y": 6}]],
+            "itemsRevert" : [[false],[false,true,false]],
             "unlockCost" : []
         }
 ]

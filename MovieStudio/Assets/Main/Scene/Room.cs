@@ -25,7 +25,7 @@ public class Room {
             Item item = new Item(roomGO);
 
             Pair pos = roomData.botRight + roomData.itemsOffset[level][i];
-            item.Reset(pos, 2, roomData.itemsRevert[level][i], itemData[roomData.itemIDs[level][i]].spritePath);
+            item.ResetItem(pos, 2, roomData.itemsRevert[level][i], roomData.itemIDs[level][i]);
 
             items.Add(item);
         }

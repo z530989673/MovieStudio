@@ -42,6 +42,8 @@ public class SceneManager : MonoBehaviour {
             Room room = new Room(Rooms);
             room.ResetRoom(roomData[i], 1);
             rooms.Add(room);
+
+            gameBoard.UpdateRoom(roomData[i], 1);
         }
 
         //rooms[0].ResetRoom(roomData[0], 0);

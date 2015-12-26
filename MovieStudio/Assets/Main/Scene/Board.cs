@@ -26,28 +26,31 @@ public class Board {
         ground = new Cell[size.x,size.y];
         for(int i = 0; i < size.x; i++)
             for (int j = 0; j < size.y; j++)
-            {
                 ground[i, j] = new Cell(gameObject);
-                ground[i, j].Reset(new Pair(i, j));
-            }
 
         for (int i = 0; i < size.x; i++)
         {
             Item wall = new Item(board);
-            wall.Reset(new Pair(i, size.y - 1), 1, true, "UI/Textures/wall");
+            wall.ResetItem(new Pair(i, size.y - 1), 1, true, 2);
             walls.Add(wall);
         }
 
         for (int i = 0; i < size.y; i++)
         {
             Item wall = new Item(board);
-            wall.Reset(new Pair(size.x - 1, i), 1, false, "UI/Textures/wall");
+            wall.ResetItem(new Pair(size.x - 1, i), 1, false, 2);
             walls.Add(wall);
         }
     }
 
-    public void Update(Room room)
+    public void UpdateRoom(RoomData roomData, int level)
     {
-
+        for(int i = 0; i < roomData.size.x; i++)
+            for (int j = 0; j < roomData.size.y; j++)
+            {
+                int indexI = i + roomData.botRight.x;
+                int indexJ = j + roomData.botRight.y;
+                ground[indexI, indexJ].ResetItem(new Pair(i, j) + roomData.botRight, 1, false, roomData.boardID);
+            }
     }
 }
