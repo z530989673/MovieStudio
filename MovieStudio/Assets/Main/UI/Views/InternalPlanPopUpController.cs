@@ -62,6 +62,7 @@ public class InternalPlanPopUpController : MonoBehaviour {
 			{
 				m_planOverview.SetActive(false);
 				m_selectedPlan = null;
+				m_confirmButton.interactable = false;
 			}
 			else
 			{

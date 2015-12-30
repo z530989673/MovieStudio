@@ -65,6 +65,7 @@ public class MovieSitePopUpController : MonoBehaviour {
 			{
 				m_compare.SetActive(false);
 				m_selectedSite = null;
+				m_confirmButton.interactable = false;
 			}
 			else
 			{
