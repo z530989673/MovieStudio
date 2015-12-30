@@ -70,6 +70,7 @@ public class EventManager : MonoBehaviour {
 
 		//Movie Site
 		BindEvent(EVT_TYPE.EVT_TYPE_MOVIESITE, new Handler(GameLoopEventHandler.MovieSite));
+		BindEvent(EVT_TYPE.EVT_TYPE_INTERNALPLAN, new Handler(GameLoopEventHandler.InternalPlan));
 
         BindEvent(EVT_TYPE.EVT_TYPE_LOAD_FAILED, new Handler(LoadEventHandler.LoadFailed));
     }

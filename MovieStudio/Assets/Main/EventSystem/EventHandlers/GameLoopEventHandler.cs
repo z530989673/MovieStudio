@@ -65,4 +65,9 @@ public class GameLoopEventHandler{
 	{
 		UIManager.Instance.SetPopupEnable("MovieSitePopUp", true);
 	}
+
+	public static void InternalPlan(Event evt)
+	{
+		UIManager.Instance.SetPopupEnable("InternalPlanPopUp", true);
+	}
 }
