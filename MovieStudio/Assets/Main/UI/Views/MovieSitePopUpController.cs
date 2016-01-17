@@ -30,6 +30,7 @@ public class MovieSitePopUpController : MonoBehaviour {
 			if(m_selectedSite != null)
 				return;
 			m_roomsGroup.SetActive(true);
+			GetUpdateList();
 			m_expandButton.interactable = true;
 			m_updateButton.interactable = false;
 		});
@@ -37,6 +38,7 @@ public class MovieSitePopUpController : MonoBehaviour {
 		m_expandButton.onClick.AddListener(()=>{			
 			if(m_selectedSite != null)
 				return;
+			GetExpandList();
 			m_roomsGroup.SetActive(true);
 			m_updateButton.interactable = true;
 			m_expandButton.interactable = false;
@@ -52,22 +54,6 @@ public class MovieSitePopUpController : MonoBehaviour {
 		m_compareCost = m_compare.transform.FindChild("Cost").GetComponent<Text>();
 
 
-		for(int i = 0;i<m_siteTotal;i++)
-		{
-			GameObject go = Instantiate(m_sitesButton);
-			go.transform.SetParent(m_roomsGroup.transform, false);			
-
-			go.name = "Site "+i;
-			ItemButton item = go.GetComponent<ItemButton>();
-			item.SetText(go.name);
-			item.AddOnClick(()=>{
-				m_compare.SetActive(true);
-				m_compareSiteName.text = "MovieSite: \n" + go.name;
-				m_compareCost.text = "Cost: 100";
-				m_confirmButton.interactable = true;
-				m_selectedSite = go;
-			});
-		}
 
 		m_confirmButton.onClick.AddListener(()=>{
 			Debug.Log("Site : " + m_selectedSite.name + " is confirmed!");
@@ -79,6 +65,7 @@ public class MovieSitePopUpController : MonoBehaviour {
 			{
 				m_compare.SetActive(false);
 				m_selectedSite = null;
+				m_confirmButton.interactable = false;
 			}
 			else
 			{
@@ -97,6 +84,56 @@ public class MovieSitePopUpController : MonoBehaviour {
 		m_roomsGroup.SetActive(false);
 		m_compare.SetActive(false);
 		m_selectedSite = null;
+	}
+
+	void GetExpandList()
+	{
+		ClearGroup ();
+		for(int i = 0;i<m_siteTotal;i++)
+		{
+			GameObject go = Instantiate(m_sitesButton);
+			go.transform.SetParent(m_roomsGroup.transform, false);			
+			
+			go.name = "Expand Site "+i;
+			ItemButton item = go.GetComponent<ItemButton>();
+			item.SetText(go.name);
+			item.AddOnClick(()=>{
+				m_compare.SetActive(true);
+				m_compareSiteName.text = "MovieSite: \n" + go.name;
+				m_compareCost.text = "Cost: 100";
+				m_confirmButton.interactable = true;
+				m_selectedSite = go;
+			});
+		}
+	}
+
+	void GetUpdateList()
+	{
+		ClearGroup();
+		for(int i = 0;i<m_siteTotal;i++)
+		{
+			GameObject go = Instantiate(m_sitesButton);
+			go.transform.SetParent(m_roomsGroup.transform, false);			
+			
+			go.name = "Update Site "+i;
+			ItemButton item = go.GetComponent<ItemButton>();
+			item.SetText(go.name);
+			item.AddOnClick(()=>{
+				m_compare.SetActive(true);
+				m_compareSiteName.text = "MovieSite: \n" + go.name;
+				m_compareCost.text = "Cost: 200";
+				m_confirmButton.interactable = true;
+				m_selectedSite = go;
+			});
+		}
+	}
+
+	void ClearGroup()
+	{
+		for(int i = m_roomsGroup.transform.childCount-1; i>=0 ; i--)
+		{
+			Destroy( m_roomsGroup.transform.GetChild(i).gameObject );
+		}
 	}
 	
 	// Update is called once per frame
