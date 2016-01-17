@@ -11,8 +11,4 @@
             "ID": 2,
             "spritePath": "UI/Textures/wall"
         }
-        {
-            "ID": 3,
-            "spritePath": "UI/Textures/board1"
-        },
 ]

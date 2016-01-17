@@ -20,12 +20,13 @@ public class Room {
     public void ResetRoom(RoomData roomData, int level)
     {
         List<ItemData> itemData = GameManager.Instance.GetItemData();
-        for(int i = 0; i < roomData.itemIDs[level].Count; i++)
+        for(int i = 0; i < roomData.items[level].Count; i++)
         {
             Item item = new Item(roomGO);
+            RoomItem roomItem = roomData.items[level][i];
 
-            Pair pos = roomData.botRight + roomData.itemsOffset[level][i];
-            item.ResetItem(pos, 2, roomData.itemsRevert[level][i], roomData.itemIDs[level][i]);
+            Pair pos = roomData.botRight + roomItem.offset;
+            item.ResetItem(pos, 2, roomItem.isRevert, roomItem.ID, roomItem.color);
 
             items.Add(item);
         }

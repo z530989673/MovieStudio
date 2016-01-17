@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
+
 public class SceneNode {
     protected GameObject gameObject;
     protected GameObject parent;
@@ -13,7 +14,7 @@ public class SceneNode {
         parent = p;
     }
 
-    protected void Reset(Pair pos, int ord = 0, bool revert = false, string path = "")
+    protected void Reset(Pair pos, int ord = 0, bool revert = false, string path = "", Color? color = null)
     {
         coord = pos;
         order = ord;
@@ -25,8 +26,8 @@ public class SceneNode {
         if (path != "")
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = GameManager.Instance.GetResourceSprite(path);
+            gameObject.GetComponent<SpriteRenderer>().color = color / 255.0f?? Color.white;
         }
-        
         if (revert)
             gameObject.transform.Rotate(0, 180, 0);
         gameObject.GetComponent<SpriteRenderer>().sortingOrder = ord;

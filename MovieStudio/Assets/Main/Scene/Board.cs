@@ -50,7 +50,7 @@ public class Board {
             {
                 int indexI = i + roomData.botRight.x;
                 int indexJ = j + roomData.botRight.y;
-                ground[indexI, indexJ].ResetItem(new Pair(i, j) + roomData.botRight, 1, false, roomData.boardID);
+                ground[indexI, indexJ].ResetItem(new Pair(i, j) + roomData.botRight, 1, false, roomData.boardID,roomData.boardColor);
             }
     }
 }

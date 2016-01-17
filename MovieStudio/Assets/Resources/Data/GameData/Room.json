@@ -9,9 +9,16 @@
             "doorDir" : 2,
             "hasWall" : true,
             "boardID": 0,
-            "itemIDs" : [[1],[1,1]],
-            "itemsOffset" : [[{"x": 0,"y": 1}],[{"x": 10,"y": 10},{"x": 13,"y": 14}]],
-            "itemsRevert" : [[false],[false,true]],
+            "boardColor" : {"r": 8, "g": 139, "b": 218, "a": 255},
+            "items" : [
+                        [
+                        {"ID" : 1, "offset" : {"x": 0,"y": 1}, "isRevert" : false,"color" : {"r": 114, "g": 9, "b": 9, "a": 255}}
+                        ],
+                        [
+                        {"ID" : 1, "offset" : {"x": 10,"y": 10}, "isRevert" : false,"color" : {"r": 114, "g": 9, "b": 9, "a": 255}},
+                        {"ID" : 1, "offset" : {"x": 13,"y": 14}, "isRevert" : true,"color" : {"r": 144, "g": 45, "b": 0, "a": 255}}
+                        ],
+                      ],
             "unlockCost" : []
         }        
         {
@@ -23,10 +30,17 @@
             "doorPosOffset":{"x": 3,"y": 0},
             "doorDir" : 2,
             "hasWall" : true,
-            "boardID": 3,
-            "itemIDs" : [[1],[1,1]],
-            "itemsOffset" : [[{"x": 0,"y": 1}],[{"x": 1,"y": 1},{"x": 3,"y": 4}]],
-            "itemsRevert" : [[false],[false,true]],
+            "boardID": 0,
+            "boardColor" : {"r": 133, "g": 238, "b": 32, "a": 255},
+            "items" : [
+                        [
+                        {"ID" : 1, "offset" : {"x": 0,"y": 1}, "isRevert" : false,"color" : {"r": 54, "g": 14, "b": 137, "a": 255}}
+                        ],
+                        [
+                        {"ID" : 1, "offset" : {"x": 1,"y": 1}, "isRevert" : false,"color" : {"r": 54, "g": 14, "b": 137, "a": 255}},
+                        {"ID" : 1, "offset" : {"x": 3,"y": 4}, "isRevert" : true,"color" : {"r": 0, "g": 202, "b": 255, "a": 255}}
+                        ],
+                      ],
             "unlockCost" : []
         }
         {
@@ -38,10 +52,18 @@
             "doorPosOffset":{"x": 3,"y": 0},
             "doorDir" : 2,
             "hasWall" : true,
-            "boardID": 3,
-            "itemIDs" : [[1],[1,1,1]],
-            "itemsOffset" : [[{"x": 0,"y": 1}],[{"x": 0,"y": 1},{"x": 1,"y": 2},{"x": 2,"y": 6}]],
-            "itemsRevert" : [[false],[false,true,false]],
+            "boardID": 0,
+            "boardColor" : {"r": 189, "g": 22, "b": 216, "a": 255},
+            "items" : [
+                        [
+                        {"ID" : 1, "offset" : {"x": 0,"y": 1}, "isRevert" : false,"color" : {"r": 63, "g": 77, "b": 2, "a": 255}}
+                        ],
+                        [
+                        {"ID" : 1, "offset" : {"x": 0,"y": 1}, "isRevert" : false,"color" : {"r": 63, "g": 77, "b": 2, "a": 255}},
+                        {"ID" : 1, "offset" : {"x": 1,"y": 2}, "isRevert" : true,"color" : {"r": 178, "g": 255, "b": 0, "a": 255}},
+                        {"ID" : 1, "offset" : {"x": 2,"y": 6}, "isRevert" : false,"color" : {"r": 53, "g": 24, "b": 24, "a": 255}}
+                        ],
+                      ],
             "unlockCost" : []
         }
 ]
