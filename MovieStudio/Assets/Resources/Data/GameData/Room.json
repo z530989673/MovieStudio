@@ -1,13 +1,15 @@
  [
         {
             "ID": 0,
-            "name": "会客厅",
+            "name": "大厅",
             "botRight":{"x": 0,"y": 0},
             "size":{"x": 20,"y": 20},
             "handlePosOffset":{"x": 2,"y": 2},
             "doorPosOffset":{"x": 3,"y": 0},
             "doorDir" : 2,
             "hasWall" : true,
+            "wallID"  : 2,
+            "wallColor" : {"r": 229, "g": 190, "b": 253, "a": 255},
             "boardID": 0,
             "boardColor" : {"r": 8, "g": 139, "b": 218, "a": 255},
             "items" : [
@@ -24,12 +26,14 @@
         {
             "ID": 1,
             "name": "会客厅",
-            "botRight":{"x": 1,"y": 1},
+            "botRight":{"x": 0,"y": 0},
             "size":{"x": 5,"y": 5},
             "handlePosOffset":{"x": 2,"y": 2},
             "doorPosOffset":{"x": 3,"y": 0},
             "doorDir" : 2,
             "hasWall" : true,
+            "wallID"  : 2,
+            "wallColor" : {"r": 136, "g": 223, "b": 158, "a": 114},
             "boardID": 0,
             "boardColor" : {"r": 133, "g": 238, "b": 32, "a": 255},
             "items" : [
@@ -45,13 +49,15 @@
         }
         {
             "ID": 2,
-            "name": "会客厅",
+            "name": "办公室",
             "botRight":{"x": 6,"y": 10},
             "size":{"x": 3,"y": 7},
             "handlePosOffset":{"x": 2,"y": 2},
             "doorPosOffset":{"x": 3,"y": 0},
             "doorDir" : 2,
             "hasWall" : true,
+            "wallID"  : 2,
+            "wallColor" : {"r": 255, "g": 114, "b": 114, "a": 114},
             "boardID": 0,
             "boardColor" : {"r": 189, "g": 22, "b": 216, "a": 255},
             "items" : [
@@ -64,6 +70,22 @@
                         {"ID" : 1, "offset" : {"x": 2,"y": 6}, "isRevert" : false,"color" : {"r": 53, "g": 24, "b": 24, "a": 255}}
                         ],
                       ],
+            "unlockCost" : []
+        }
+        {
+            "ID": 3,
+            "name": "逗逼厅",
+            "botRight":{"x": 0,"y": 5},
+            "size":{"x": 2,"y": 2},
+            "handlePosOffset":{"x": 1,"y": 1},
+            "doorPosOffset":{"x": 0,"y": 0},
+            "doorDir" : 2,
+            "hasWall" : true,
+            "wallID"  : 2,
+            "wallColor" : {"r": 255, "g": 252, "b": 141, "a": 114},
+            "boardID": 0,
+            "boardColor" : {"r": 255, "g": 255, "b": 0, "a": 255},
+            "items" : [],
             "unlockCost" : []
         }
 ]

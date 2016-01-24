@@ -19,6 +19,8 @@ public class RoomData {
     public Pair doorPosOffset;
     public DOOR_DIR doorDir = DOOR_DIR.NONE;
     public bool hasWall = true;
+    public int wallID;
+    public Color wallColor;
     public int boardID;
     public Color boardColor;
     public List<List<RoomItem>> items;

@@ -35,7 +35,7 @@ public class SceneManager : MonoBehaviour {
     {
         List<RoomData> roomData = GameManager.Instance.GetRoomData();
 
-        gameBoard.Init(roomData[0].size, board);
+        gameBoard.Init(roomData[0], board);
 
         for (int i = 0; i < roomData.Count; i++)
         {
@@ -46,7 +46,7 @@ public class SceneManager : MonoBehaviour {
             gameBoard.UpdateRoom(roomData[i], 1);
         }
 
-        //rooms[0].ResetRoom(roomData[0], 0);
+        gameBoard.UpdateWall(roomData);
     }
 
 	// Update is called once per frame
