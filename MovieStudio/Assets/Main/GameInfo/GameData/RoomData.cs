@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public struct RoomItem
 {
     public int ID;
+    public int order;
     public Pair offset;
     public bool isRevert;
     public Color color;

@@ -28,7 +28,7 @@ public class Room {
                 RoomItem roomItem = roomData.items[level][i];
 
                 Pair pos = roomData.botRight + roomItem.offset;
-                item.ResetItem(pos, -(pos.x + pos.y), roomItem.isRevert, roomItem.ID, roomItem.color);
+                item.ResetItem(pos, roomItem.order, roomItem.isRevert, roomItem.ID, roomItem.color);
 
                 items.Add(item);
             }

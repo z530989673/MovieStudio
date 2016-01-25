@@ -41,10 +41,10 @@ public class Board {
             }
 
         for (int i = 0; i < size.y; i++)
-            leftWalls[size.x, i].ResetItem(new Pair(size.x - 1, i), -(i + size.x - 1), false, globalRoom.wallID, globalRoom.wallColor);
+            leftWalls[size.x, i].ResetItem(new Pair(size.x - 1, i), (int)ITEM_ITEM_ORDER.ITEM_ORDER_BACK, false, globalRoom.wallID, globalRoom.wallColor);
 
         for (int i = 0; i < size.x; i++)
-            rightWalls[i, size.y].ResetItem(new Pair(i, size.y - 1), -(i + size.y - 1), true, globalRoom.wallID, globalRoom.wallColor);
+            rightWalls[i, size.y].ResetItem(new Pair(i, size.y - 1), (int)ITEM_ITEM_ORDER.ITEM_ORDER_BACK, true, globalRoom.wallID, globalRoom.wallColor);
     }
 
     public void UpdateRoom(RoomData roomData, int level)
@@ -54,7 +54,7 @@ public class Board {
             {
                 int indexI = i + roomData.botRight.x;
                 int indexJ = j + roomData.botRight.y;
-                ground[indexI, indexJ].ResetCell(roomData, new Pair(i, j) + roomData.botRight, -10000);//, false, roomData.boardID, roomData.boardColor);
+                ground[indexI, indexJ].ResetCell(roomData, new Pair(i, j) + roomData.botRight, (int)ITEM_ITEM_ORDER.ITEM_ORDER_GROUND);//, false, roomData.boardID, roomData.boardColor);
             }
     }
 
@@ -71,7 +71,7 @@ public class Board {
                     int roomID = ground[i - 1, j].roomID;
                     if (roomID == 0)
                         roomID = ground[i, j].roomID;
-                    leftWalls[i, j].ResetItem(new Pair(i - 1, j), -(i + j - 1), false, rooms[roomID].wallID, rooms[roomID].wallColor);
+                    leftWalls[i, j].ResetItem(new Pair(i - 1, j), (int)ITEM_ITEM_ORDER.ITEM_ORDER_BACK, false, rooms[roomID].wallID, rooms[roomID].wallColor);
                 }
             }
 
@@ -83,7 +83,7 @@ public class Board {
                     int roomID = ground[i, j - 1].roomID;
                     if (roomID == 0)
                         roomID = ground[i, j].roomID;
-                    rightWalls[i, j].ResetItem(new Pair(i, j - 1), -(i + j - 1), true, rooms[roomID].wallID, rooms[roomID].wallColor);
+                    rightWalls[i, j].ResetItem(new Pair(i, j - 1), (int)ITEM_ITEM_ORDER.ITEM_ORDER_BACK, true, rooms[roomID].wallID, rooms[roomID].wallColor);
                 }
             }
     }

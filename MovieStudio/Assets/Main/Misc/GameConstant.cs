@@ -1,6 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public enum ITEM_ITEM_ORDER
+{
+    ITEM_ORDER_GROUND = -1000000,
+    ITEM_ORDER_BACK = 0,
+    ITEM_ORDER_CHARACTOR = 10,
+    ITEM_ORDER_FRONT = 20,
+    ITEM_ORDER_MAX = 30
+}
+
 public enum RESOURCE_TYPE
 {
     RESOURCE_PREFAB = 0,
