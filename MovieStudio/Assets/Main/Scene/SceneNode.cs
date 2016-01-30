@@ -30,7 +30,7 @@ public class SceneNode {
         }
         if (revert)
             gameObject.transform.Rotate(0, 180, 0);
-        gameObject.GetComponent<SpriteRenderer>().sortingOrder = ord;
+        gameObject.GetComponent<SpriteRenderer>().sortingOrder = order;
 
         Vector2 actualPos = SceneManager.GetActualPos(coord);
         gameObject.transform.position = new Vector3(actualPos.x, actualPos.y,0);
