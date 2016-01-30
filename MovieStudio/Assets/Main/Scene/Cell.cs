@@ -12,8 +12,13 @@ public class Cell : Item {
         ResetItem(pos, ord, false, room.boardID, room.boardColor);
     }
 
+    public void UpdateDoorDir(int dir)
+    {
+        doorDir |= (int)dir;
+    }
+
     public int roomID;
-    public DOOR_DIR doorDir = DOOR_DIR.NONE;
+    public int doorDir = GameConstant.DOOR_DIR_NONE;
     public bool walkable = true;
 
     protected RoomData room;

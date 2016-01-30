@@ -54,7 +54,21 @@ public class Board {
             {
                 int indexI = i + roomData.botRight.x;
                 int indexJ = j + roomData.botRight.y;
-                ground[indexI, indexJ].ResetCell(roomData, new Pair(i, j) + roomData.botRight, (int)ITEM_ITEM_ORDER.ITEM_ORDER_GROUND);//, false, roomData.boardID, roomData.boardColor);
+                ground[indexI, indexJ].ResetCell(roomData, new Pair(i, j) + roomData.botRight, (int)ITEM_ITEM_ORDER.ITEM_ORDER_GROUND);
+            }
+
+        for(int i = 0; i < roomData.doors.Count; i++)
+            for(int j = 0; j < roomData.doors[i].length; j++)
+            {
+                int indexI = roomData.botRight.x + roomData.doors[i].offset.x;
+                int indexJ = roomData.botRight.y + roomData.doors[i].offset.y;
+
+                if (roomData.doors[i].dir == GameConstant.DOOR_DIR_BOTRIGHT || roomData.doors[i].dir == GameConstant.DOOR_DIR_TOPLEFT)
+                    indexJ += j;
+                else if (roomData.doors[i].dir == GameConstant.DOOR_DIR_BOTLEFT || roomData.doors[i].dir == GameConstant.DOOR_DIR_TOPRIGHT)
+                    indexI += j;
+
+                ground[indexI, indexJ].UpdateDoorDir(roomData.doors[i].dir);
             }
     }
 
@@ -66,11 +80,14 @@ public class Board {
         for (int i = 1; i < size.x; i++)
             for (int j = 0; j < size.y; j++)
             {
-                if (ground[i, j].roomID != ground[i - 1, j].roomID)
+                if (ground[i, j].roomID != ground[i - 1, j].roomID &&
+                    (ground[i, j].doorDir & GameConstant.DOOR_DIR_BOTRIGHT) == 0 &&
+                    (ground[i - 1, j].doorDir & GameConstant.DOOR_DIR_TOPLEFT) == 0)
                 {
                     int roomID = ground[i - 1, j].roomID;
                     if (roomID == 0)
                         roomID = ground[i, j].roomID;
+
                     leftWalls[i, j].ResetItem(new Pair(i - 1, j), (int)ITEM_ITEM_ORDER.ITEM_ORDER_BACK, false, rooms[roomID].wallID, rooms[roomID].wallColor);
                 }
             }
@@ -78,7 +95,9 @@ public class Board {
         for (int i = 0; i < size.x; i++)
             for (int j = 1; j < size.y; j++)
             {
-                if (ground[i, j].roomID != ground[i, j - 1].roomID)
+                if (ground[i, j].roomID != ground[i, j - 1].roomID &&
+                    (ground[i, j].doorDir & GameConstant.DOOR_DIR_BOTLEFT) == 0 &&
+                    (ground[i, j - 1].doorDir & GameConstant.DOOR_DIR_TOPRIGHT) == 0)
                 {
                     int roomID = ground[i, j - 1].roomID;
                     if (roomID == 0)

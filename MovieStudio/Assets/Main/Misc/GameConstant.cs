@@ -60,5 +60,9 @@ public enum COMPANY_STAGE
 }
 
 public class GameConstant {
-
+    static public int DOOR_DIR_NONE = 0;
+    static public int DOOR_DIR_TOPLEFT = 1;
+    static public int DOOR_DIR_TOPRIGHT = 2;
+    static public int DOOR_DIR_BOTLEFT = 4;
+    static public int DOOR_DIR_BOTRIGHT = 8;
 }
