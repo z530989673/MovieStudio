@@ -8,14 +8,14 @@ public class Movie {
     public MOVIE_TYPE type;
     public int theme; // int or enum?
     public int platform; //int or enum?
-    public int rank;
+    public int level;
     public int cost;
     public int incomes;
     public MOVIE_STAGE stage;
-    public int story;
-    public int creativity;
-    public int artibility;
-    public int musibility;
+    public int storyScore;
+    public int creativityScore;
+    public int artScore;
+    public int musicScore;
     public int companyID;
-    public int[] charactorIDs;
+    public int[] characterIDs;
 }
