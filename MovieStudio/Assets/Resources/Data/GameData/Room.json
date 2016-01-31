@@ -10,7 +10,7 @@
             "boardID": 0,
             "boardColor" : {"r": 8, "g": 139, "b": 218, "a": 255},
             "doors" : [
-                      {"offset" : {"x": 0,"y": 5}, "length" : 2, "dir" : 8}
+                      {"startIndex" : 5, "length" : 2, "dir" : 8}
                       ],
             "items" : [
                         [
@@ -34,10 +34,10 @@
             "boardID": 0,
             "boardColor" : {"r": 133, "g": 238, "b": 32, "a": 255},
             "doors" : [
-                      {"offset" : {"x": 2,"y": 6}, "length" : 3, "dir" : 2},
-                      {"offset" : {"x": 0,"y": 1}, "length" : 1, "dir" : 8},
-                      {"offset" : {"x": 6,"y": 3}, "length" : 2, "dir" : 1},
-                      {"offset" : {"x": 0,"y": 0}, "length" : 7, "dir" : 4},
+                      {"startIndex" : 2, "length" : 3, "dir" : 2},
+                      {"startIndex" : 1, "length" : 1, "dir" : 8},
+                      {"startIndex" : 3, "length" : 2, "dir" : 1},
+                      {"startIndex" : 0, "length" : 7, "dir" : 4},
                       ],
             "items" : [
                         [
@@ -61,7 +61,7 @@
             "boardID": 0,
             "boardColor" : {"r": 189, "g": 22, "b": 216, "a": 255},
             "doors" : [
-                      {"offset" : {"x": 1,"y": 6}, "length" : 1, "dir" : 2}
+                      {"startIndex" : 1, "length" : 1, "dir" : 2}
                       ],
             "items" : [
                         [

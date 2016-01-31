@@ -60,13 +60,19 @@ public class Board {
         for(int i = 0; i < roomData.doors.Count; i++)
             for(int j = 0; j < roomData.doors[i].length; j++)
             {
-                int indexI = roomData.botRight.x + roomData.doors[i].offset.x;
-                int indexJ = roomData.botRight.y + roomData.doors[i].offset.y;
+                int indexI = roomData.botRight.x;
+                int indexJ = roomData.botRight.y;
+
+                if (roomData.doors[i].dir == GameConstant.DOOR_DIR_TOPLEFT)
+                    indexI += roomData.size.x - 1;
+                else if (roomData.doors[i].dir == GameConstant.DOOR_DIR_TOPRIGHT)
+                    indexJ += roomData.size.y - 1;
+
 
                 if (roomData.doors[i].dir == GameConstant.DOOR_DIR_BOTRIGHT || roomData.doors[i].dir == GameConstant.DOOR_DIR_TOPLEFT)
-                    indexJ += j;
+                    indexJ += j + roomData.doors[i].startIndex;
                 else if (roomData.doors[i].dir == GameConstant.DOOR_DIR_BOTLEFT || roomData.doors[i].dir == GameConstant.DOOR_DIR_TOPRIGHT)
-                    indexI += j;
+                    indexI += j + roomData.doors[i].startIndex;
 
                 ground[indexI, indexJ].UpdateDoorDir(roomData.doors[i].dir);
             }

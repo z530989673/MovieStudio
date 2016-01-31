@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 public struct Door
 {
-    public Pair offset;
+    public int startIndex;
     public int length;
-    public int dir; 
+    public int dir;
 }
 
 public struct RoomItem
@@ -18,7 +18,8 @@ public struct RoomItem
     public Color color;
 }
 
-public class RoomData {
+public class RoomData
+{
     public int ID = -1;
     public Pair botRight;
     public Pair size;
