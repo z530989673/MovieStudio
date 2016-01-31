@@ -7,11 +7,12 @@ public class Company {
     public string title;
     public string desc;
     public COMPANY_STAGE stage;
-    public Dictionary<COMPANY_STAGE, int> movieTypeRanks;
-    public Dictionary<int, int> themeTypeRanks;
-    public Dictionary<int, int> paltformRanks;
+    public Dictionary<COMPANY_STAGE, int> movieTypeLevels;
+    public Dictionary<int, int> themeTypeLevels;
+    public Dictionary<int, int> paltformLevels;
     public int level;
     public int incomes;
     public int[] movieIDs;
     public int[] charactorIDs;
+	public List<Team> teams;
 }
