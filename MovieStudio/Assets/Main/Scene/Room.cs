@@ -19,7 +19,7 @@ public class Room {
 
     public void ResetRoom(RoomData roomData, int level)
     {
-        List<ItemData> itemData = GameManager.Instance.GetItemData();
+        //List<ItemData> itemData = GameManager.Instance.GetItemData();
         if (roomData.items.Count > level)
         {
             for(int i = 0; i < roomData.items[level].Count; i++)

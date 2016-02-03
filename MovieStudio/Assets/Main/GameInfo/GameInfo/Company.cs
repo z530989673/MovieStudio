@@ -9,7 +9,7 @@ public class Company {
     public COMPANY_STAGE stage;
     public Dictionary<COMPANY_STAGE, int> movieTypeLevels;
     public Dictionary<int, int> themeTypeLevels;
-    public Dictionary<int, int> paltformLevels;
+    public Dictionary<int, int> platformLevels;
     public int level;
     public int incomes;
     public int[] movieIDs;
