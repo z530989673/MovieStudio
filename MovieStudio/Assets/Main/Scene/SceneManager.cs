@@ -40,7 +40,7 @@ public class SceneManager : MonoBehaviour {
         for (int i = 0; i < roomData.Count; i++)
         {
             Room room = new Room(Rooms);
-            room.ResetRoom(roomData[i], 1);
+            room.ResetRoom(roomData[i]);
             rooms.Add(room);
 
             gameBoard.UpdateRoom(roomData[i], 1);

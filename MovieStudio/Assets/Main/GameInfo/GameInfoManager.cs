@@ -26,7 +26,37 @@ public class GameInfoManager : MonoBehaviour {
     public GameData getGameData() { return gameData; }
 
     public List<RoomData> GetRoomData() { return gameData.roomData; }
+    public List<LevelItemData> GetLevelItemData() { return gameData.levelItemData; }
     public List<ItemData> GetItemData() { return gameData.itemData; }
+
+    public RoomData GetRoomData(int dataID)
+    {
+        if (dataID < 0 || dataID >= gameData.roomData.Count)
+            return null;
+        return gameData.roomData[dataID]; 
+    }
+    public LevelItemData GetLevelItemData(int dataID)
+    {
+        if (dataID < 0 || dataID >= gameData.levelItemData.Count)
+            return null;
+        return gameData.levelItemData[dataID]; 
+    }
+    public ItemData GetItemData(int dataID)
+    {
+        if (dataID < 0 || dataID >= gameData.itemData.Count)
+            return null;
+        return gameData.itemData[dataID]; 
+    }
+
+    public int GetRoomLevel(int roomID)
+    {
+        if (gameInfo.roomLevel.Length < roomID)
+            Debug.LogError("wrong roomID");
+        else
+            return gameInfo.roomLevel[roomID];
+
+        return -1;
+    }
 
 	// Use this for initialization
 	void Start () {
@@ -49,6 +79,7 @@ public class GameInfoManager : MonoBehaviour {
     public void Init()
     {
         gameData.roomData = Util.Deserialize<List<RoomData>>(GameManager.Instance.GetResourceTextAsset("Data/GameData/Room").ToString());
+        gameData.levelItemData = Util.Deserialize<List<LevelItemData>>(GameManager.Instance.GetResourceTextAsset("Data/GameData/LevelItem").ToString());
         gameData.itemData = Util.Deserialize<List<ItemData>>(GameManager.Instance.GetResourceTextAsset("Data/GameData/Item").ToString());
     }
 

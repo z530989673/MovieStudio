@@ -9,10 +9,20 @@ public class Cell : Item {
     {
         room = roomData;
         roomID = room.ID;
-        ResetItem(pos, ord, false, room.boardID, room.boardColor);
+
+        int roomLevel = GameManager.Instance.GetRoomLevel(roomID);
+        LevelItemData levelItemData = GameManager.Instance.GetLevelItemData(roomData.boardID);
+
+        if (levelItemData == null)
+            return;
+
+        int boardID = levelItemData.getItemID(roomLevel);
+        ItemData itemData = GameManager.Instance.GetItemData(boardID);
+
+        ResetItem(pos, itemData, ord, false);
     }
 
-    public void UpdateDoorDir(int dir)
+    public void UpdateDoor(int dir)
     {
         doorDir |= (int)dir;
     }

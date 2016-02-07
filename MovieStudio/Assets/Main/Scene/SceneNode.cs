@@ -17,7 +17,7 @@ public class SceneNode {
     protected void Reset(Pair pos, int ord = 0, bool revert = false, string path = "", Color? color = null)
     {
         coord = pos;
-        order = ord - (pos.x + pos.y) * (int)ITEM_ITEM_ORDER.ITEM_ORDER_MAX;
+        order = ord - (pos.x + pos.y) * GameConstant.ITEM_ORDER_UPLIMIT;
         if (gameObject == null)
         {
             gameObject = GameObject.Instantiate(GameManager.Instance.GetResourceObject("UI/Prefabs/SceneItem"));

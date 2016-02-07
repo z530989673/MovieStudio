@@ -17,20 +17,83 @@ public class Room {
         items = new List<Item>();
     }
 
-    public void ResetRoom(RoomData roomData, int level)
+    public void ResetRoom(RoomData roomData)
     {
-        //List<ItemData> itemData = GameManager.Instance.GetItemData();
-        if (roomData.items.Count > level)
+        int level = GameManager.Instance.GetRoomLevel(roomData.ID);
+
+        for (int i = 0; i < roomData.doors.Count; i++)
         {
-            for(int i = 0; i < roomData.items[level].Count; i++)
+            LevelItemData levelItemData = GameManager.Instance.GetLevelItemData(roomData.doors[i].levelItemID);
+            if (levelItemData == null)
+                continue;
+             
+            int itemID = levelItemData.getItemID(level);
+            ItemData itemData = GameManager.Instance.GetItemData(itemID);
+
+            if (itemData != null)
             {
                 Item item = new Item(roomGO);
-                RoomItem roomItem = roomData.items[level][i];
+                Pair pos = new Pair(roomData.botRight);
+                if (roomData.doors[i].dir == GameConstant.DOOR_DIR_TOPLEFT)
+                    pos.x += roomData.size.x - 1;
+                else if (roomData.doors[i].dir == GameConstant.DOOR_DIR_TOPRIGHT)
+                    pos.y += roomData.size.y - 1;
+                if (roomData.doors[i].dir == GameConstant.DOOR_DIR_BOTLEFT || roomData.doors[i].dir == GameConstant.DOOR_DIR_TOPRIGHT)
+                    pos.x += roomData.doors[i].startIndex;
+                else if (roomData.doors[i].dir == GameConstant.DOOR_DIR_BOTRIGHT || roomData.doors[i].dir == GameConstant.DOOR_DIR_TOPLEFT)
+                    pos.y += roomData.doors[i].startIndex;
 
-                Pair pos = roomData.botRight + roomItem.offset;
-                item.ResetItem(pos, roomItem.order, roomItem.isRevert, roomItem.ID, roomItem.color);
+                bool isRevert = false;
+                if (roomData.doors[i].dir == GameConstant.DOOR_DIR_BOTLEFT || roomData.doors[i].dir == GameConstant.DOOR_DIR_TOPRIGHT)
+                    isRevert = true;
+
+                if (roomData.doors[i].dir == GameConstant.DOOR_DIR_BOTRIGHT)
+                    pos.x--;
+                else if (roomData.doors[i].dir == GameConstant.DOOR_DIR_BOTLEFT)
+                    pos.y--;
+
+                item.ResetItem(pos, itemData, (int)ITEM_ORDER.ITEM_ORDER_BACK, isRevert);
 
                 items.Add(item);
+            }
+        }
+
+        for (int i = 0; i < roomData.staticItems.Count; i++)
+        {
+            StaticLevelItem staticLevelItem = roomData.staticItems[i];
+            LevelItemData levelItemData = GameManager.Instance.GetLevelItemData(roomData.staticItems[i].levelItemID);
+
+            if (levelItemData == null)
+                continue;
+
+            int itemID = levelItemData.getItemID(level);
+            ItemData itemData = GameManager.Instance.GetItemData(itemID);
+
+            if (itemData != null)
+            {
+                Item item = new Item(roomGO);
+                Pair pos = roomData.botRight + staticLevelItem.offset;
+                item.ResetItem(pos, itemData, staticLevelItem.order, staticLevelItem.isRevert);
+
+                items.Add(item);
+            }
+        }
+
+        if (roomData.dynamicItems.Count > level)
+        {
+            for (int i = 0; i < roomData.dynamicItems[level].Count; i++)
+            {
+                DynamicLevelItem levelItem = roomData.dynamicItems[level][i];
+                ItemData itemData = GameManager.Instance.GetItemData(levelItem.itemID);
+
+                if (itemData != null)
+                {
+                    Item item = new Item(roomGO);
+                    Pair pos = roomData.botRight + levelItem.offset;
+                    item.ResetItem(pos, itemData, levelItem.order, levelItem.isRevert);
+
+                    items.Add(item);
+                }
             }
         }
     }

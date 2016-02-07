@@ -63,10 +63,14 @@ public class GameManager : MonoBehaviour {
     }
 
     public List<RoomData> GetRoomData() { return GameInfoManager.Instance.GetRoomData(); }
+    public List<LevelItemData> GetLevelItemData() { return GameInfoManager.Instance.GetLevelItemData(); }
     public List<ItemData> GetItemData() { return GameInfoManager.Instance.GetItemData(); }
 
-    public RoomData GetRoomData(int dataID) { return GameInfoManager.Instance.GetRoomData()[dataID]; }
-    public ItemData GetItemData(int dataID) { return GameInfoManager.Instance.GetItemData()[dataID]; }
+    public RoomData GetRoomData(int dataID) { return GameInfoManager.Instance.GetRoomData(dataID); }
+    public LevelItemData GetLevelItemData(int dataID) { return GameInfoManager.Instance.GetLevelItemData(dataID); }
+    public ItemData GetItemData(int dataID) { return GameInfoManager.Instance.GetItemData(dataID); }
+
+    public int GetRoomLevel(int roomID) { return GameInfoManager.Instance.GetRoomLevel(roomID); }
 
     void startPreLoad()
     {

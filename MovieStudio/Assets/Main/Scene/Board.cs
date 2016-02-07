@@ -40,11 +40,22 @@ public class Board {
                 rightWalls[i, j] = new Item(board);
             }
 
+        int globalRoomLevel = GameManager.Instance.GetRoomLevel(0);
+        LevelItemData levelItemData = GameManager.Instance.GetLevelItemData(globalRoom.wallID);
+
+        if (levelItemData == null)
+            return;
+
+        int wallID = levelItemData.getItemID(globalRoomLevel);
+        ItemData itemData = GameManager.Instance.GetItemData(wallID);
+
         for (int i = 0; i < size.y; i++)
-            leftWalls[size.x, i].ResetItem(new Pair(size.x - 1, i), (int)ITEM_ITEM_ORDER.ITEM_ORDER_BACK, false, globalRoom.wallID, globalRoom.wallColor);
+        {
+            leftWalls[size.x, i].ResetItem(new Pair(size.x - 1, i), itemData, (int)ITEM_ORDER.ITEM_ORDER_BACK, false);
+        }
 
         for (int i = 0; i < size.x; i++)
-            rightWalls[i, size.y].ResetItem(new Pair(i, size.y - 1), (int)ITEM_ITEM_ORDER.ITEM_ORDER_BACK, true, globalRoom.wallID, globalRoom.wallColor);
+            rightWalls[i, size.y].ResetItem(new Pair(i, size.y - 1), itemData, (int)ITEM_ORDER.ITEM_ORDER_BACK, true);
     }
 
     public void UpdateRoom(RoomData roomData, int level)
@@ -54,7 +65,7 @@ public class Board {
             {
                 int indexI = i + roomData.botRight.x;
                 int indexJ = j + roomData.botRight.y;
-                ground[indexI, indexJ].ResetCell(roomData, new Pair(i, j) + roomData.botRight, (int)ITEM_ITEM_ORDER.ITEM_ORDER_GROUND);
+                ground[indexI, indexJ].ResetCell(roomData, new Pair(i, j) + roomData.botRight, (int)ITEM_ORDER.ITEM_ORDER_FLOOR);
             }
 
         for(int i = 0; i < roomData.doors.Count; i++)
@@ -74,14 +85,14 @@ public class Board {
                 else if (roomData.doors[i].dir == GameConstant.DOOR_DIR_BOTLEFT || roomData.doors[i].dir == GameConstant.DOOR_DIR_TOPRIGHT)
                     indexI += j + roomData.doors[i].startIndex;
 
-                ground[indexI, indexJ].UpdateDoorDir(roomData.doors[i].dir);
+                ground[indexI, indexJ].UpdateDoor(roomData.doors[i].dir);
             }
     }
 
     /// <summary>
     /// should run after all rooms has been updated
     /// </summary>
-    public void UpdateWall(List<RoomData> rooms)
+    public void  UpdateWall(List<RoomData> rooms)
     {
         for (int i = 1; i < size.x; i++)
             for (int j = 0; j < size.y; j++)
@@ -94,7 +105,16 @@ public class Board {
                     if (roomID == 0)
                         roomID = ground[i, j].roomID;
 
-                    leftWalls[i, j].ResetItem(new Pair(i - 1, j), (int)ITEM_ITEM_ORDER.ITEM_ORDER_BACK, false, rooms[roomID].wallID, rooms[roomID].wallColor);
+                    int roomLevel = GameManager.Instance.GetRoomLevel(roomID);
+                    LevelItemData levelItemData = GameManager.Instance.GetLevelItemData(rooms[roomID].wallID);
+
+                    if (levelItemData == null)
+                        continue;
+
+                    int wallID = levelItemData.getItemID(roomLevel);
+                    ItemData itemData = GameManager.Instance.GetItemData(wallID);
+
+                    leftWalls[i, j].ResetItem(new Pair(i - 1, j), itemData, (int)ITEM_ORDER.ITEM_ORDER_BACK, false);
                 }
             }
 
@@ -108,7 +128,17 @@ public class Board {
                     int roomID = ground[i, j - 1].roomID;
                     if (roomID == 0)
                         roomID = ground[i, j].roomID;
-                    rightWalls[i, j].ResetItem(new Pair(i, j - 1), (int)ITEM_ITEM_ORDER.ITEM_ORDER_BACK, true, rooms[roomID].wallID, rooms[roomID].wallColor);
+
+                    int roomLevel = GameManager.Instance.GetRoomLevel(roomID);
+                    LevelItemData levelItemData = GameManager.Instance.GetLevelItemData(rooms[roomID].wallID);
+
+                    if (levelItemData == null)
+                        continue;
+
+                    int wallID = levelItemData.getItemID(roomLevel);
+                    ItemData itemData = GameManager.Instance.GetItemData(wallID);
+
+                    rightWalls[i, j].ResetItem(new Pair(i, j - 1), itemData, (int)ITEM_ORDER.ITEM_ORDER_BACK, true);
                 }
             }
     }

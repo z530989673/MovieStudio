@@ -1,14 +1,81 @@
- [
+ [        
         {
             "ID": 0,
+            "color": {"r": 8, "g": 139, "b": 218, "a": 255},
             "spritePath": "UI/Textures/board"
         },
         {
             "ID": 1,
-            "spritePath": "UI/Textures/chair"
+            "color": {"r": 133, "g": 238, "b": 32, "a": 255},
+            "spritePath": "UI/Textures/board"
         },
         {
             "ID": 2,
+            "color": {"r": 189, "g": 22, "b": 216, "a": 255},
+            "spritePath": "UI/Textures/board"
+        },
+        {
+            "ID": 3,
+            "color": {"r": 255, "g": 255, "b": 0, "a": 255},
+            "spritePath": "UI/Textures/board"
+        },
+        {
+            "ID": 4,
+            "color": {"r": 229, "g": 190, "b": 253, "a": 255},
             "spritePath": "UI/Textures/wall"
+        },
+        {
+            "ID": 5,
+            "color": {"r": 136, "g": 223, "b": 158, "a": 114},
+            "spritePath": "UI/Textures/wall"
+        },
+        {
+            "ID": 6,
+            "color": {"r": 255, "g": 114, "b": 114, "a": 114},
+            "spritePath": "UI/Textures/wall"
+        },
+        {
+            "ID": 7,
+            "color": {"r": 255, "g": 252, "b": 141, "a": 114},
+            "spritePath": "UI/Textures/wall"
+        },
+        {
+            "ID": 8,
+            "color": {"r": 114, "g": 9, "b": 9, "a": 255},
+            "spritePath": "UI/Textures/chair"
+        },
+        {
+            "ID": 9,
+            "color": {"r": 144, "g": 45, "b": 0, "a": 255},
+            "spritePath": "UI/Textures/chair"
+        },
+        {
+            "ID": 10,
+            "color": {"r": 54, "g": 14, "b": 137, "a": 255},
+            "spritePath": "UI/Textures/chair"
+        },
+        {
+            "ID": 11,
+            "color": {"r": 0, "g": 202, "b": 255, "a": 255},
+            "spritePath": "UI/Textures/chair"
+        },
+        {
+            "ID": 12,
+            "color": {"r": 63, "g": 77, "b": 2, "a": 255},
+            "spritePath": "UI/Textures/chair"
+        },
+        {
+            "ID": 13,
+            "color": {"r": 178, "g": 255, "b": 0, "a": 255},
+            "spritePath": "UI/Textures/chair"
+        },
+        {
+            "ID": 14,
+            "color": {"r": 53, "g": 24, "b": 24, "a": 255},
+            "spritePath": "UI/Textures/chair"
+        },   
+        {
+            "ID": 15,
+            "spritePath": "UI/Textures/door"
         }
 ]
