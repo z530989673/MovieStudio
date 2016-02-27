@@ -13,7 +13,6 @@ public class MovieDonePopUpController : ViewController {
 	public GameObject m_ADButton;
 	public GameObject m_ADGroup;
 
-	private bool m_initialized = false;
 	private int m_adNumber = 4;
 
 	private ItemButton m_selectedButton;

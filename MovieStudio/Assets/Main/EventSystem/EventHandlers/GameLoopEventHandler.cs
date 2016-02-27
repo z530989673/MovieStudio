@@ -70,4 +70,9 @@ public class GameLoopEventHandler{
 	{
 		UIManager.Instance.SetPopupEnable("InternalPlanPopUp", true);
 	}
+
+	public static void ExternalPlan(Event evt)
+	{
+		UIManager.Instance.SetPopupEnable("ExternalPlanPopUp", true);
+	}
 }

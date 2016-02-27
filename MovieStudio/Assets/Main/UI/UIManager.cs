@@ -37,6 +37,7 @@ public class UIManager : MonoBehaviour {
     {
         LoadOverlay("TopBar");
 		LoadOverlay("MovieMaking");
+		LoadDebug("DebugUI");
     }
     public void ChangeScreen(Event evt)
     {
@@ -57,6 +58,7 @@ public class UIManager : MonoBehaviour {
 		// Set backgound of pop up to click to close all popups
 		Transform background = m_popup.transform.GetChild(0);
 		background.GetComponent<Button>().onClick.AddListener( ()=>{CloseAllPopUps(); background.gameObject.SetActive(false);});
+
     }
 
 	// Use this for initialization
@@ -66,7 +68,8 @@ public class UIManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if(Input.GetKeyDown(KeyCode.D))
+			SetDebugUIEnable(true);
 	}
 
     public GameObject OpenScreen(string name)
@@ -158,6 +161,25 @@ public class UIManager : MonoBehaviour {
 			m_popups[key].SetActive(false);
 		}
 	}
+
+	public void SetPopupDebugEnable(string name, bool enabled)
+	{
+		m_debug.SetActive(enabled);
+	}
+
+	private void LoadDebug(string name)
+	{
+		GameObject debugUI = Instantiate(GameManager.Instance.GetResourceObject("UI/Prefabs/" + name));
+		debugUI.transform.SetParent(m_debug.transform, false);
+		debugUI.SetActive(false);
+		m_debug = debugUI;
+	}
+
+	public void SetDebugUIEnable(bool enabled)
+	{
+		m_debug.SetActive(enabled);
+	}
+
 
 	public GameObject GetScreen(string name)
 	{

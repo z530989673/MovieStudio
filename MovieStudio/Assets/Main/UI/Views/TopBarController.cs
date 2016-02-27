@@ -45,6 +45,7 @@ public class TopBarController : ViewController {
 			m_MakeMovie.GetComponent<Button>().onClick.AddListener( delegate { Debug.Log("set!"); SendEvent(EVT_TYPE.EVT_TYPE_MAKE_MOVIE); CloseAll(); } );
 			m_MovieSite.GetComponent<Button>().onClick.AddListener( delegate { Debug.Log("site"); SendEvent(EVT_TYPE.EVT_TYPE_MOVIESITE); CloseAll();});
 			m_InternalPlan.GetComponent<Button>().onClick.AddListener( delegate { Debug.Log("Internal plan"); SendEvent(EVT_TYPE.EVT_TYPE_INTERNALPLAN); CloseAll();});
+			m_ExternalPlan.GetComponent<Button>().onClick.AddListener( delegate { Debug.Log("External plan"); SendEvent(EVT_TYPE.EVT_TYPE_EXTERNALPLAN); CloseAll();});
 
 			m_DropMenu.SetActive(false);
 		}
