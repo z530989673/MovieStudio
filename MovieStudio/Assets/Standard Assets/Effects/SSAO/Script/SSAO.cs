@@ -18,7 +18,7 @@ public class SSAO : MonoBehaviour
     public float distance = 1f;
 
     [Range(0f, 1f)]
-    public float bias = 0.1f;
+    public float bias = 0.4f;
 
     [Range(0f, 1f)]
     public float lumContribution = 0.5f;

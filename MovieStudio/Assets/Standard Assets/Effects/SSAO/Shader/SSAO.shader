@@ -23,13 +23,16 @@
 				float4 projPos : TEXCOORD0;
 				float4 posV	   : TEXCOORD1;
 				float2 uv	   : TEXCOORD2;
+#if UNITY_UV_STARTS_AT_TOP
+				float2 uv2     : TEXCOORD3;
+#endif
 			};
 
-			uniform sampler2D _NormalDepthTexture;	
 			uniform sampler2D _NoiseTexture;
 			uniform sampler2D _MainTex;
 
 			uniform float4 _OcclusionColor;
+			uniform float4 _MainTex_TexelSize;
 
 			uniform float4 _ParamBiasDis; // Bias / Sample Radius / Distance Cutoff / Cutoff Falloff
 			uniform float4 _ParamSSAOAdjust; // Noise Size / Luminosity Contribution / Intensity / Distance
@@ -39,11 +42,6 @@
 
 			float4x4 _ViewToWorldMatrix;
 			float4x4 _CameraModelView;
-
-			static const float3 offsetVector[14] = { { 1,1,0 },{ 1,1,0 },{ 1,-1,0 },{ 1,-1,0 },{ -1,1,0 },{ -1,1,0 },{ -1,1,0 },{ -1,-1,0 },{ 0,0,0 },{ 0,0,0 },{ 0,1,0 },{ 0,-1,0 },{ 1,0,0 },{ -1,0,0 } };
-			static const int sampleCount = 14;
-			static const float sampleRadius = 0.01f;
-			static const float threashholdRadius = 500.0f;
 
 			float3 GetVSPosition(float2 screenUV, float depth)
 			{
@@ -58,6 +56,12 @@
 				o.posV = mul(UNITY_MATRIX_MV, i.vertex);
 				o.projPos = ComputeScreenPos(o.posH);
 				o.uv = i.texcoord;
+
+#if UNITY_UV_STARTS_AT_TOP
+				o.uv2 = i.texcoord;
+				if (_MainTex_TexelSize.y < 0.0)
+					o.uv2.y = 1.0 - o.uv2.y;
+#endif
 
 				return o;
 			}
@@ -104,15 +108,11 @@
 				return (value - from) / (to - from);
 			}
 
-			float4 getAOColor(float ao, float2 uv)
+			float4 GetAOColor(float ao, float2 uv)
 			{
-				// Luminance for the current pixel, used to reduce the AO amount in bright areas
-				// Could potentially be replaced by the lighting pass in Deferred...
-				float sourceUV = float2(uv.x, 1 - uv.y);
-				float3 color = tex2D(_MainTex, sourceUV).rgb;
+				float3 color = tex2D(_MainTex, uv).rgb;
 				float luminance = dot(color, float3(0.299, 0.587, 0.114));
 				float aoFinal = lerp(ao, 1.0, luminance * _ParamSSAOAdjust.y);
-				aoFinal = ao;
 				return float4(aoFinal, aoFinal, aoFinal, 1.0);
 			}
 
@@ -152,7 +152,11 @@
 
 			float4 frag(v2f i) : COLOR
 			{
-				return saturate(getAOColor(SSAO(i.uv), i.uv) + _OcclusionColor);
+#if UNITY_UV_STARTS_AT_TOP
+				return saturate(GetAOColor(SSAO(i.uv), i.uv2) + _OcclusionColor);
+#else
+				return saturate(GetAOColor(SSAO(i.uv), i.uv) + _OcclusionColor);
+#endif
 			}
 			ENDCG
 		}
@@ -214,20 +218,29 @@
 			{
 				float4 posH	 : SV_POSITION;
 				float2 uv	 : TEXCOORD0;
+#if UNITY_UV_STARTS_AT_TOP
+				float2 uv2   : TEXCOORD2;
+#endif
 			};
 
 			v2f vert(appdata_img v)
 			{
 				v2f o;
 				o.posH = mul(UNITY_MATRIX_MVP, v.vertex);
-				o.uv = v.texcoord;// MultiplyUV(UNITY_MATRIX_TEXTURE0, i.texcoord);
+				o.uv = v.texcoord;
+#if UNITY_UV_STARTS_AT_TOP
+				o.uv2 = float2(v.texcoord.x, 1 - v.texcoord.y);
+#endif
 				return o;
 			}
 
 			float4 frag(v2f i) : COLOR
 			{
-				float2 sourceUV = float2(i.uv.x, 1 - i.uv.y);
-				float4 color = tex2D(_MainTex, sourceUV).rgba;
+#if UNITY_UV_STARTS_AT_TOP
+				float4 color = tex2D(_MainTex, i.uv2).rgba;
+#else
+				float4 color = tex2D(_MainTex, i.uv).rgba;
+#endif
 				return float4(color.rgb * tex2D(_SSAOTex, i.uv).rgb, color.a);
 			}
 
