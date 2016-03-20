@@ -2,10 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class SceneCharactor : SceneNode
+public class SceneCharacter : SceneNode
 {
 	private CharacterData characterData;
-    public SceneCharactor(GameObject parent) : base(parent) { }
+    public SceneCharacter(GameObject parent) : base(parent) { }
     public Pair pos;
     private int currentState;
 }

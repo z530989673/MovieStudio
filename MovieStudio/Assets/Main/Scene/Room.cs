@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class Room {
     private RoomData roomData;
-    public List<Item> items;
+    public List<Item> items;// save all the doors, static items and dynamic items
     public int level;
 
     private GameObject roomGO;
@@ -15,6 +15,12 @@ public class Room {
         roomGO.transform.parent = Rooms.transform;
 
         items = new List<Item>();
+    }
+
+    public void update()
+    {
+        foreach(Item item in items)
+            item.Update();
     }
 
     public void ResetRoom(RoomData roomData)
