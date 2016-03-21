@@ -5,7 +5,7 @@ public enum ITEM_ORDER
 {
     ITEM_ORDER_FLOOR = -1000000,
     ITEM_ORDER_BACK = 0,
-    ITEM_ORDER_CHARACTOR = 10,
+    ITEM_ORDER_CHARACTER = 10,
     ITEM_ORDER_FRONT = 20,
     ITEM_ORDER_CELL = 1000000
 }
@@ -17,7 +17,7 @@ public enum RESOURCE_TYPE
     RESOURCE_TEXTASSET
 }
 
-public enum CHARACTOR_RANK  //temp
+public enum CHARACTER_RANK  //temp
 {
     NORMAL = 0,
     GOOD,
@@ -25,7 +25,7 @@ public enum CHARACTOR_RANK  //temp
     LEGENDARY
 }
 
-public enum CHARACTOR_TYPE
+public enum CHARACTER_TYPE
 {
     ACTOR = 0,
     VOICE_ACTOR,

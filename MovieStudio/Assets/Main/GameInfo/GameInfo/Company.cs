@@ -13,6 +13,6 @@ public class Company {
     public int level;
     public int incomes;
     public int[] movieIDs;
-    public int[] charactorIDs;
+    public int[] characterIDs;
 	public List<Team> teams;
 }

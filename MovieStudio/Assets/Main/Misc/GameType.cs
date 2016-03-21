@@ -21,4 +21,9 @@ public class Pair
     {
         return new Pair(value1.x + value2.x, value1.y + value2.y);
     }
+
+    public static Pair operator -(Pair value1, Pair value2)
+    {
+        return new Pair(value1.x - value2.x, value1.y - value2.y);
+    }
 }

@@ -15,12 +15,12 @@ public class GameInfo {
 
     private List<Company> companyPool;
     private List<Movie> moviePool;
-    private List<Charactor> charactorPool;
+    private List<Character> characterPool;
 
 
     public int MyCompanyID;
     public int[] myMovieIDs;
-    public int[] myCharactorIDs;
+    public int[] myCharacterIDs;
     public int startTime;   //TODO: Time type
     public int totalTime;   //TODO：Time type
 

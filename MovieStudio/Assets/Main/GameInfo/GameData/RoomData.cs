@@ -45,6 +45,8 @@ public class LevelItemData
 {
     public int ID = -1;
     public int startLevel;
+
+    //don't directly get itemID by [] operator, plz use getItemID method
     public int[] itemIDs;
 
     public int getItemID(int currentLevel)
@@ -53,6 +55,9 @@ public class LevelItemData
             return -1;
         else
         {
+            if (itemIDs == null)
+                return -1;
+
             int level = currentLevel - startLevel;
             if (level >= itemIDs.Length)
                 level = itemIDs.Length - 1;

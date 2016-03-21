@@ -76,6 +76,18 @@
         },   
         {
             "ID": 15,
+            "color": {"r": 66, "g": 116, "b": 9, "a": 255},
             "spritePath": "UI/Textures/door"
+        },   
+        {
+            "ID": 16,
+            "color": {"r": 193, "g": 32, "b": 195, "a": 255},
+            "spritePath": "UI/Textures/door"
+        },   
+        {
+            "ID": 17,
+            "color": {"r": 255, "g": 118, "b": 118, "a": 118},
+            "spritePath": "UI/Textures/screen",
+            "size" : {"x": 1, "y": 3}
         }
 ]

@@ -8,4 +8,5 @@ public class ItemData {
     public Color color = new Color(255,255,255,255);
     public string spritePath = "";
     public string prefabPath = "";
+    public Pair size = new Pair(1,1);
 }

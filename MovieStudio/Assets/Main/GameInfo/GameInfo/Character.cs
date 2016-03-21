@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Charactor {
+public class Character {
     public int id;
     public string name;
     public int sex;
     public string desc;
-    public CHARACTOR_RANK rank;
+    public CHARACTER_RANK rank;
     public int level;
-    public CHARACTOR_TYPE type;
+    public CHARACTER_TYPE type;
     public int companyID;
     public int[] movieIDs;
     

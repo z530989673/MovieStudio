@@ -7,17 +7,20 @@ public class SceneNode {
     protected GameObject gameObject;
     protected GameObject parent;
     protected Pair coord;
-    public int order;
+    public int refOrder;
+    bool isActive;
 
     public SceneNode(GameObject p)
     {
         parent = p;
+        isActive = false;
     }
 
     protected void Reset(Pair pos, int ord = 0, bool revert = false, string path = "", Color? color = null)
     {
+        isActive = true;
         coord = pos;
-        order = ord - (pos.x + pos.y) * GameConstant.ITEM_ORDER_UPLIMIT;
+        refOrder = ord;
         if (gameObject == null)
         {
             gameObject = GameObject.Instantiate(GameManager.Instance.GetResourceObject("UI/Prefabs/SceneItem"));
@@ -30,10 +33,19 @@ public class SceneNode {
         }
         if (revert)
             gameObject.transform.Rotate(0, 180, 0);
-        gameObject.GetComponent<SpriteRenderer>().sortingOrder = order;
 
         Vector2 actualPos = SceneManager.GetActualPos(coord);
         gameObject.transform.position = new Vector3(actualPos.x, actualPos.y,0);
+    }
+
+    virtual public void Update()
+    {
+        if (isActive)
+        {
+            int order = refOrder - (coord.x + coord.y) * GameConstant.ITEM_ORDER_UPLIMIT;
+            order = refOrder + SceneManager.Instance.GetTileOrder(coord) * GameConstant.ITEM_ORDER_UPLIMIT;
+            gameObject.GetComponent<SpriteRenderer>().sortingOrder = order;
+        }
     }
 
     public void Remove()
