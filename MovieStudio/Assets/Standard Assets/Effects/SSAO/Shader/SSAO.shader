@@ -24,7 +24,7 @@
 				float4 posV	   : TEXCOORD1;
 				float2 uv	   : TEXCOORD2;
 #if UNITY_UV_STARTS_AT_TOP
-				float2 uv2     : TEXCOORD3;
+				float2 uv2     : TEXCOORD3;    
 #endif
 			};
 
