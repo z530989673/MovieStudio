@@ -111,8 +111,9 @@ public class GameManager : MonoBehaviour {
 
         // pre load everying that we may need
         startPreLoad();
+
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 	
